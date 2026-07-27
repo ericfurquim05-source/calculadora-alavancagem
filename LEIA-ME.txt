@@ -1,12 +1,33 @@
-CALCULADORA DE ALAVANCAGEM — VERSÃO 1.0.0
+CALCULADORA DE ALAVANCAGEM — VERSÃO 1.1.0
 
-PUBLICAÇÃO
-1. Extraia o ZIP.
-2. Envie todos os arquivos soltos para a raiz do novo repositório/site.
-3. Abra reset.html uma vez depois da publicação.
+ATUALIZAÇÃO NO GITHUB
+1. Abra o repositório calculadora-alavancagem.
+2. Clique em Add file > Upload files.
+3. Envie os arquivos deste ZIP soltos na raiz.
+4. Confirme em Commit changes.
+5. Abra reset.html uma vez depois da publicação.
+
+O QUE MUDOU
+- Cálculo principal agora usa o modelo de meia parcela do Simulador de Consórcio.
+- A pergunta principal é somente o aporte mensal.
+- O recurso para lance/complemento é opcional e não é somado automaticamente ao crédito.
+- Removida a antiga tabela fechada de faixas.
+- Removidos poder de compra combinado, próxima faixa e projeção longa como destaques.
+- Novos comparativos: moradia, locação tradicional, imóvel comercial, Short Stay, liquidez com cota contemplada e projeto empresarial.
+- Cadastro simplificado para nome e e-mail.
+
+MODELO DOS CÁLCULOS
+Crédito estimado = aporte mensal × 220 ÷ (50% + 24,2%).
+Parcela integral estimada = crédito × (100% + 24,2%) ÷ 220.
+
+Cenários ilustrativos de receita bruta:
+- Locação tradicional: 0,50% ao mês.
+- Imóvel comercial: 0,70% ao mês.
+- Short Stay: 1,00% ao mês.
+- Liquidez com cota contemplada: referência de 20% a 40% do crédito.
 
 CAPTURA DE LEADS
-O formulário está preparado para enviar nome, e-mail e WhatsApp ao endereço:
+O formulário envia nome e e-mail ao endereço:
 empresasa187@gmail.com
 
 Ele usa o endpoint AJAX do FormSubmit. No primeiro teste, o serviço pode enviar um e-mail de confirmação para ativar o recebimento.
@@ -18,16 +39,7 @@ LINK DO GRUPO
 No arquivo app.js, procure:
 whatsappGroupUrl: ''
 
-Cole o link completo do grupo entre as aspas. Enquanto o campo estiver vazio, o botão abre uma conversa com a equipe pedindo acesso ao grupo.
-
-BASE DOS CÁLCULOS
-A calculadora usa as faixas dos arquivos enviados:
-- TABELA CRÉDITO X PARCELA - SI CONSÓRCIOS.xlsx
-- Planilha_Base_SI_Consorcios(1).xlsx
-- Memoria_de_Calculo_Simulacoes_SI.xlsx
-- Auditoria_Completa_Tabela_SI_Consorcios.xlsx
-
-Regra: selecionar a maior parcela cadastrada que não ultrapassa o orçamento informado. Não há interpolação entre faixas.
+Cole o link completo do grupo entre as aspas. Enquanto estiver vazio, o botão abre uma conversa com a equipe pedindo acesso.
 
 IMPORTANTE
-Aluguel e valorização são premissas editáveis e ilustrativas. A tabela não contém taxa administrativa, fundo de reserva, seguro, reajuste, regras de contemplação, lance ou custo total. Esses dados devem ser conferidos na proposta e no contrato.
+Os números são projeções ilustrativas. Taxas, reajustes, fundo de reserva, seguro, contemplação, lance, liberação do crédito e utilização dependem da proposta e do contrato. Receita bruta não representa lucro líquido.
