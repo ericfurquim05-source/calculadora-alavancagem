@@ -10,9 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Alavancagem">
   <title>Calculadora de Alavancagem Patrimonial</title>
-  <link rel="manifest" href="./manifest.json?v=122">
-  <link rel="apple-touch-icon" href="./icon-192.png?v=122">
-  <link rel="stylesheet" href="./estilos.css?v=122">
+  <link rel="manifest" href="./manifest.json?v=123">
+  <link rel="apple-touch-icon" href="./icon-192.png?v=123">
+  <link rel="stylesheet" href="./estilos.css?v=123">
 </head>
 <body>
   <div class="ambient ambient-one"></div>
@@ -208,7 +208,7 @@
             <div class="headline-card">
               <span>Prazo de referência</span>
               <strong id="resultTerm">220 meses</strong>
-              <small>Prazo da faixa selecionada na tabela</small>
+              <small>Prazo utilizado no cálculo</small>
             </div>
           </div>
 
@@ -287,7 +287,7 @@
             <div class="flow-card payment">
               <span>Parcela após a contemplação</span>
               <strong id="rentFullInstallment">R$ 0,00/mês</strong>
-              <small>Referência simples do plano de meia parcela</small>
+              <small>Crédito integral + taxa de 24,2% em 220 meses</small>
             </div>
           </div>
 
@@ -406,11 +406,13 @@
             <summary><span>Como o cálculo foi feito?</span><small>Ver metodologia</small></summary>
             <div class="method-copy">
               <div class="formula-box">
-                <span>Modelo utilizado</span>
-                <strong>Selecionamos a maior parcela da tabela que cabe no valor informado</strong>
+                <span>Fórmula da parcela inicial até a contemplação</span>
+                <strong>(50% do crédito ÷ 220) + (24,2% do crédito ÷ 220)</strong>
               </div>
-              <p>A calculadora usa as faixas reais da planilha de meia parcela. Exemplo: com limite de R$ 2.000 por mês, a faixa selecionada é R$ 1.979, com crédito de R$ 700.000 e prazo de 220 meses.</p>
-              <p>A parcela inicial é válida até a contemplação. A referência após a contemplação considera duas vezes a meia parcela; o valor contratual real pode mudar conforme o mês da contemplação, reajustes, fundo de reserva, seguro e recomposição do saldo.</p>
+              <p>Primeiro calculamos o maior crédito que cabe no aporte informado. Depois arredondamos o crédito para baixo, em faixas de R$ 10 mil, e aplicamos a fórmula da meia parcela. Assim, o valor da parcela não fica artificialmente igual ao limite informado.</p>
+              <p>Exemplo: para um crédito de R$ 300.000, metade do crédito corresponde a R$ 150.000. Dividido por 220, resulta em R$ 681,82. A taxa de 24,2% corresponde a R$ 72.600; dividida por 220, resulta em R$ 330,00. Parcela inicial: R$ 1.011,82.</p>
+              <p>Com um aporte máximo de R$ 2.000, o crédito estimado é arredondado para R$ 590.000 e a parcela inicial calculada fica em R$ 1.989,91. Após a contemplação, a referência passa a considerar 100% do crédito mais a taxa de 24,2%, divididos em 220 meses.</p>
+              <p>Os valores contratuais podem mudar com reajustes, fundo de reserva, seguro, mês da contemplação e recomposição do saldo.</p>
               <p>A projeção de 60 meses utiliza 25% de capital próprio de referência, valorização de 4,82% ao ano e receita bruta de 1% ao mês. O valor econômico bruto soma valorização estimada e receita bruta acumulada, sem descontar despesas, parcelas, saldo devedor ou impostos.</p>
               <p>As projeções de aluguel e negociação de cota são cenários comerciais ilustrativos e não representam garantia de renda, contemplação ou resultado.</p>
             </div>
@@ -444,6 +446,6 @@
   </div>
 
   <div id="toast" class="toast" role="status"></div>
-  <script src="./app.js?v=122" defer></script>
+  <script src="./app.js?v=123" defer></script>
 </body>
 </html>

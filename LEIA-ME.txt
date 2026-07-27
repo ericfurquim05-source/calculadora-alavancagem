@@ -1,60 +1,46 @@
-CALCULADORA DE ALAVANCAGEM PATRIMONIAL — VERSÃO 1.2.2
+CALCULADORA DE ALAVANCAGEM PATRIMONIAL — VERSÃO 1.2.3
 
-ATUALIZAÇÃO NO GITHUB
-1. Abra o repositório calculadora-alavancagem.
-2. Clique em Add file > Upload files.
-3. Envie os arquivos deste ZIP soltos na raiz.
-4. Confirme em Commit changes.
-5. Abra reset.html uma vez depois da publicação.
+ATUALIZAÇÃO PRINCIPAL
+- Corrigido o cálculo matemático da meia parcela.
+- Removida a seleção por parcelas antigas da tabela.
+- O prazo de referência utilizado é 220 meses.
+- A taxa administrativa total utilizada é 24,2%.
 
-O QUE MUDOU
-- O valor digitado agora é tratado como limite mensal, não como a parcela exata.
-- A calculadora seleciona a maior parcela real da tabela que cabe no orçamento informado.
-- Exemplo corrigido: limite de R$ 2.000 seleciona parcela inicial de R$ 1.979, crédito de R$ 700.000 e prazo de 220 meses.
-- O resultado agora mostra “Parcela inicial até a contemplação”.
-- A parcela de referência após a contemplação considera 2x a meia parcela.
-- O texto explica que, após a compra, o cliente passa a pagar pelo próprio imóvel.
-- “Liquidez com cota contemplada” foi substituído por “Venda da carta contemplada”.
+FÓRMULA DA PARCELA INICIAL ATÉ A CONTEMPLAÇÃO
+1. Metade do crédito ÷ 220.
+2. Taxa de 24,2% sobre o crédito ÷ 220.
+3. Somar os dois resultados.
 
-MODELO DOS CÁLCULOS
-1. A calculadora percorre a tabela de crédito, parcela e prazo.
-2. Seleciona a maior parcela igual ou inferior ao limite mensal informado.
-3. Usa o crédito e o prazo exatos dessa faixa, sem cálculo proporcional e sem inventar faixas intermediárias.
-4. Parcela de referência após a contemplação = parcela inicial × 2, por se tratar de um modelo de meia parcela.
+Fórmula resumida:
+((crédito ÷ 2) ÷ 220) + ((crédito × 24,2%) ÷ 220)
 
-EXEMPLOS DA TABELA
-- Limite de R$ 600: parcela R$ 512, crédito R$ 150.000, prazo 180 meses.
-- Limite de R$ 1.700: parcela R$ 1.676, crédito R$ 600.000, prazo 220 meses.
-- Limite de R$ 2.000: parcela R$ 1.979, crédito R$ 700.000, prazo 220 meses.
+EXEMPLO COM CRÉDITO DE R$ 300.000
+- Metade do crédito: R$ 150.000.
+- R$ 150.000 ÷ 220 = R$ 681,82.
+- Taxa administrativa: R$ 300.000 × 24,2% = R$ 72.600.
+- R$ 72.600 ÷ 220 = R$ 330,00.
+- Parcela inicial até a contemplação: R$ 1.011,82.
 
-VISÃO DE ALAVANCAGEM EM 60 MESES
-- Capital próprio de referência: 25% do crédito.
-- Valorização ilustrativa: 4,82% ao ano.
-- Receita bruta de imóveis de maior rendimento: 1% ao mês.
-- Valor econômico bruto gerado: valorização estimada + receita bruta acumulada.
+PARCELA DE REFERÊNCIA APÓS A CONTEMPLAÇÃO
+A referência após a contemplação considera 100% do crédito mais a taxa administrativa:
+(crédito ÷ 220) + ((crédito × 24,2%) ÷ 220)
 
-IMPORTANTE: a parcela após a contemplação é uma referência simples. O valor real depende do mês da contemplação, reajustes, fundo de reserva, seguro, recomposição do saldo e regras da proposta. Valor econômico bruto não significa lucro líquido.
+COMO O APORTE É TRANSFORMADO EM CRÉDITO
+- A calculadora encontra o maior crédito teórico que cabe no aporte mensal.
+- O crédito é arredondado para baixo em faixas de R$ 10.000.
+- Depois, a parcela é calculada novamente pela fórmula correta.
+- Isso evita que a parcela exibida fique exatamente igual ao valor máximo informado.
 
-CENÁRIOS ILUSTRATIVOS DE RENDA BRUTA
-- Locação residencial: 0,50% ao mês.
-- Salas comerciais e galpões: 1,00% ao mês.
-- Short Stay / Airbnb: 1,00% ao mês.
-- Venda da carta contemplada: referência de 20% a 40% do crédito.
+EXEMPLO COM APORTE DE R$ 2.000
+- Crédito teórico máximo: aproximadamente R$ 592.991,91.
+- Crédito exibido: R$ 590.000.
+- Parcela inicial até a contemplação: R$ 1.989,91.
+- Parcela de referência após a contemplação: R$ 3.330,82.
+- Folga em relação ao aporte informado: R$ 10,09.
 
-CAPTURA DE LEADS
-O formulário envia nome, WhatsApp e e-mail ao endereço:
-empresasa187@gmail.com
+ARQUIVOS PARA PUBLICAÇÃO
+Suba todos os arquivos na raiz do repositório calculadora-alavancagem.
+Depois do commit, abra reset.html uma vez para remover o cache antigo.
 
-Ele usa o endpoint AJAX do FormSubmit. No primeiro teste, o serviço pode enviar um e-mail de confirmação para ativar o recebimento.
-
-WHATSAPP
-Contato configurado: 55 51 98055-4326.
-
-LINK DO GRUPO
-No arquivo app.js, procure:
-whatsappGroupUrl: ''
-
-Cole o link completo do grupo entre as aspas. Enquanto estiver vazio, o botão abre uma conversa com a equipe pedindo acesso.
-
-IMPORTANTE
-Os números são projeções ilustrativas. Taxas, reajustes, fundo de reserva, seguro, contemplação, lance, liberação do crédito e utilização dependem da proposta e do contrato. Receita bruta não representa lucro líquido.
+OBSERVAÇÃO
+Os valores são referências matemáticas do modelo informado. Reajustes, fundo de reserva, seguro, mês da contemplação e recomposição do saldo podem alterar os valores contratuais reais.

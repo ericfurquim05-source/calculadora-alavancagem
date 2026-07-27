@@ -2,7 +2,7 @@
   'use strict';
 
   const CONFIG = {
-    version: '1.2.2',
+    version: '1.2.3',
     leadEndpoint: 'https://formsubmit.co/ajax/empresasa187@gmail.com',
     whatsappNumber: '5551980554326',
     whatsappGroupUrl: '',
@@ -17,30 +17,12 @@
     ownCapitalShare: 0.25,
     projectionMonths: 60,
     saleLowRate: 0.20,
-    saleHighRate: 0.40
+    saleHighRate: 0.40,
+    administrationRate: 0.242,
+    termMonths: 220,
+    creditStep: 10000,
+    minimumCredit: 100000
   };
-
-  // Faixas reais da planilha de meia parcela S.I. Consórcios.
-  // A calculadora sempre escolhe a maior parcela que cabe no limite informado.
-  const PLANS = [
-    { credit: 100000, installment: 341, term: 180 },
-    { credit: 150000, installment: 512, term: 180 },
-    { credit: 200000, installment: 615, term: 180 },
-    { credit: 250000, installment: 768, term: 200 },
-    { credit: 300000, installment: 922, term: 200 },
-    { credit: 350000, installment: 1078, term: 200 },
-    { credit: 400000, installment: 1230, term: 200 },
-    { credit: 500000, installment: 1397, term: 220 },
-    { credit: 600000, installment: 1676, term: 220 },
-    { credit: 700000, installment: 1979, term: 220 },
-    { credit: 800000, installment: 2197, term: 220 },
-    { credit: 900000, installment: 2479, term: 220 },
-    { credit: 1000000, installment: 2798, term: 220 },
-    { credit: 1250000, installment: 3326, term: 220 },
-    { credit: 1500000, installment: 3991, term: 220 },
-    { credit: 1750000, installment: 4656, term: 220 },
-    { credit: 2000000, installment: 5319, term: 220 }
-  ];
 
   const $ = (id) => document.getElementById(id);
   const money = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 2 });
@@ -148,19 +130,22 @@
     if (element) element.textContent = value;
   }
 
-  function findPlanForBudget(budget) {
-    let selected = null;
-    for (const plan of PLANS) {
-      if (plan.installment <= budget) selected = plan;
-      else break;
-    }
-    return selected;
+  function calculateInitialInstallment(credit) {
+    const reducedCommonFund = (credit / 2) / MODEL.termMonths;
+    const administrationFee = (credit * MODEL.administrationRate) / MODEL.termMonths;
+    return reducedCommonFund + administrationFee;
   }
 
-  function calculatePostContemplationReference(initialInstallment) {
-    // Referência simples para o plano de meia parcela: parcela integral = 2x a inicial.
-    // A parcela contratual real depende do mês de contemplação, reajustes e recomposição do saldo.
-    return initialInstallment * 2;
+  function calculateFullInstallment(credit) {
+    const fullCommonFund = credit / MODEL.termMonths;
+    const administrationFee = (credit * MODEL.administrationRate) / MODEL.termMonths;
+    return fullCommonFund + administrationFee;
+  }
+
+  function calculateCreditForBudget(budget) {
+    const maximumCredit = (budget * MODEL.termMonths) / (0.5 + MODEL.administrationRate);
+    const roundedCredit = Math.floor(maximumCredit / MODEL.creditStep) * MODEL.creditStep;
+    return Math.max(0, roundedCredit);
   }
 
   function applyIncomeBars(residential, commercial, shortStay) {
@@ -174,19 +159,19 @@
     const budget = parseMoney($('monthlyBudget').value);
     const capital = parseMoney($('availableCapital').value);
 
-    const selectedPlan = findPlanForBudget(budget);
-    if (!selectedPlan) {
-      $('calculatorError').textContent = `A menor parcela disponível na tabela é ${money.format(PLANS[0].installment)} por mês.`;
+    const credit = calculateCreditForBudget(budget);
+    if (credit < MODEL.minimumCredit) {
+      const minimumInstallment = calculateInitialInstallment(MODEL.minimumCredit);
+      $('calculatorError').textContent = `Para iniciar a simulação com crédito de ${wholeMoney.format(MODEL.minimumCredit)}, o aporte de referência é ${money.format(minimumInstallment)} por mês.`;
       $('results').hidden = true;
       return;
     }
 
     $('calculatorError').textContent = '';
 
-    const credit = selectedPlan.credit;
-    const initialInstallment = selectedPlan.installment;
-    const term = selectedPlan.term;
-    const fullInstallment = calculatePostContemplationReference(initialInstallment);
+    const term = MODEL.termMonths;
+    const initialInstallment = calculateInitialInstallment(credit);
+    const fullInstallment = calculateFullInstallment(credit);
     const budgetGap = Math.max(0, budget - initialInstallment);
     const residentialRent = credit * MODEL.residentialRentRate;
     const commercialRent = credit * MODEL.highYieldRentRate;
@@ -235,8 +220,8 @@
     setText('resultInstallment', money.format(initialInstallment));
     setText('resultFullInstallment', money.format(fullInstallment));
     setText('resultTerm', `${term} meses`);
-    setText('resultCreditNote', 'Faixa real selecionada na tabela de meia parcela');
-    setText('resultInstallmentNote', budgetGap > 0 ? `${money.format(budgetGap)} abaixo do limite informado` : 'Exatamente dentro do limite informado');
+    setText('resultCreditNote', 'Crédito estimado em faixas de R$ 10 mil');
+    setText('resultInstallmentNote', budgetGap > 0 ? `${money.format(budgetGap)} abaixo do limite informado` : 'Dentro do limite informado');
 
     if (capital > 0) {
       $('capitalNotice').hidden = false;
@@ -392,7 +377,7 @@
     if (storedLead) unlockCalculator(storedLead);
 
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=122').catch(() => {}));
+      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=123').catch(() => {}));
     }
   }
 
