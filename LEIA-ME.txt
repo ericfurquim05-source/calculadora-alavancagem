@@ -1,4 +1,4 @@
-CALCULADORA DE ALAVANCAGEM PATRIMONIAL — VERSÃO 1.2.1
+CALCULADORA DE ALAVANCAGEM PATRIMONIAL — VERSÃO 1.2.2
 
 ATUALIZAÇÃO NO GITHUB
 1. Abra o repositório calculadora-alavancagem.
@@ -8,34 +8,38 @@ ATUALIZAÇÃO NO GITHUB
 5. Abra reset.html uma vez depois da publicação.
 
 O QUE MUDOU
-- O cadastro voltou a solicitar nome, WhatsApp e e-mail.
-- A página inicial explica com mais clareza o que a pessoa recebe ao acessar.
-- Foi adicionada uma explicação completa de alavancagem patrimonial.
-- A estratégia usa 25% de capital próprio como referência intermediária entre 20% e 30%.
-- Nova projeção de 60 meses com valorização, renda bruta e valor econômico gerado.
-- Novo comparativo mostrando como o aluguel pode ajudar a pagar a parcela integral.
-- Salas comerciais, galpões e Short Stay / Airbnb usam o cenário ilustrativo de 1% bruto ao mês.
-- Locação residencial usa cenário ilustrativo de 0,50% bruto ao mês.
-- O final da página reforça consultoria e planejamento totalmente gratuitos.
-- O resumo enviado ao WhatsApp inclui os principais números da simulação.
+- O valor digitado agora é tratado como limite mensal, não como a parcela exata.
+- A calculadora seleciona a maior parcela real da tabela que cabe no orçamento informado.
+- Exemplo corrigido: limite de R$ 2.000 seleciona parcela inicial de R$ 1.979, crédito de R$ 700.000 e prazo de 220 meses.
+- O resultado agora mostra “Parcela inicial até a contemplação”.
+- A parcela de referência após a contemplação considera 2x a meia parcela.
+- O texto explica que, após a compra, o cliente passa a pagar pelo próprio imóvel.
+- “Liquidez com cota contemplada” foi substituído por “Venda da carta contemplada”.
 
 MODELO DOS CÁLCULOS
-Crédito estimado = aporte mensal × 220 ÷ (50% + 24,2%).
-Parcela integral estimada = crédito × (100% + 24,2%) ÷ 220.
+1. A calculadora percorre a tabela de crédito, parcela e prazo.
+2. Seleciona a maior parcela igual ou inferior ao limite mensal informado.
+3. Usa o crédito e o prazo exatos dessa faixa, sem cálculo proporcional e sem inventar faixas intermediárias.
+4. Parcela de referência após a contemplação = parcela inicial × 2, por se tratar de um modelo de meia parcela.
 
-VISÃO DE ALAVANCAGEM EM 5 ANOS
+EXEMPLOS DA TABELA
+- Limite de R$ 600: parcela R$ 512, crédito R$ 150.000, prazo 180 meses.
+- Limite de R$ 1.700: parcela R$ 1.676, crédito R$ 600.000, prazo 220 meses.
+- Limite de R$ 2.000: parcela R$ 1.979, crédito R$ 700.000, prazo 220 meses.
+
+VISÃO DE ALAVANCAGEM EM 60 MESES
 - Capital próprio de referência: 25% do crédito.
 - Valorização ilustrativa: 4,82% ao ano.
 - Receita bruta de imóveis de maior rendimento: 1% ao mês.
 - Valor econômico bruto gerado: valorização estimada + receita bruta acumulada.
 
-IMPORTANTE: valor econômico bruto não significa lucro líquido. Não são descontadas parcelas, saldo devedor, vacância, impostos, condomínio, manutenção, seguros, administração ou outros custos.
+IMPORTANTE: a parcela após a contemplação é uma referência simples. O valor real depende do mês da contemplação, reajustes, fundo de reserva, seguro, recomposição do saldo e regras da proposta. Valor econômico bruto não significa lucro líquido.
 
 CENÁRIOS ILUSTRATIVOS DE RENDA BRUTA
 - Locação residencial: 0,50% ao mês.
 - Salas comerciais e galpões: 1,00% ao mês.
 - Short Stay / Airbnb: 1,00% ao mês.
-- Liquidez com cota contemplada: referência de 20% a 40% do crédito.
+- Venda da carta contemplada: referência de 20% a 40% do crédito.
 
 CAPTURA DE LEADS
 O formulário envia nome, WhatsApp e e-mail ao endereço:

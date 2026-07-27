@@ -2,7 +2,7 @@
   'use strict';
 
   const CONFIG = {
-    version: '1.2.1',
+    version: '1.2.2',
     leadEndpoint: 'https://formsubmit.co/ajax/empresasa187@gmail.com',
     whatsappNumber: '5551980554326',
     whatsappGroupUrl: '',
@@ -10,18 +10,37 @@
   };
 
   const MODEL = {
-    term: 220,
-    adminRate: 0.242,
-    reducedFundShare: 0.50,
     residentialRentRate: 0.005,
     highYieldRentRate: 0.01,
     shortStayRentRate: 0.01,
     annualAppreciationRate: 0.0482,
     ownCapitalShare: 0.25,
-    projectionYears: 5,
+    projectionMonths: 60,
     saleLowRate: 0.20,
     saleHighRate: 0.40
   };
+
+  // Faixas reais da planilha de meia parcela S.I. Consórcios.
+  // A calculadora sempre escolhe a maior parcela que cabe no limite informado.
+  const PLANS = [
+    { credit: 100000, installment: 341, term: 180 },
+    { credit: 150000, installment: 512, term: 180 },
+    { credit: 200000, installment: 615, term: 180 },
+    { credit: 250000, installment: 768, term: 200 },
+    { credit: 300000, installment: 922, term: 200 },
+    { credit: 350000, installment: 1078, term: 200 },
+    { credit: 400000, installment: 1230, term: 200 },
+    { credit: 500000, installment: 1397, term: 220 },
+    { credit: 600000, installment: 1676, term: 220 },
+    { credit: 700000, installment: 1979, term: 220 },
+    { credit: 800000, installment: 2197, term: 220 },
+    { credit: 900000, installment: 2479, term: 220 },
+    { credit: 1000000, installment: 2798, term: 220 },
+    { credit: 1250000, installment: 3326, term: 220 },
+    { credit: 1500000, installment: 3991, term: 220 },
+    { credit: 1750000, installment: 4656, term: 220 },
+    { credit: 2000000, installment: 5319, term: 220 }
+  ];
 
   const $ = (id) => document.getElementById(id);
   const money = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 2 });
@@ -129,12 +148,19 @@
     if (element) element.textContent = value;
   }
 
-  function calculateCreditFromReducedPayment(payment) {
-    return payment * MODEL.term / (MODEL.reducedFundShare + MODEL.adminRate);
+  function findPlanForBudget(budget) {
+    let selected = null;
+    for (const plan of PLANS) {
+      if (plan.installment <= budget) selected = plan;
+      else break;
+    }
+    return selected;
   }
 
-  function calculateFullPayment(credit) {
-    return credit * (1 + MODEL.adminRate) / MODEL.term;
+  function calculatePostContemplationReference(initialInstallment) {
+    // Referência simples para o plano de meia parcela: parcela integral = 2x a inicial.
+    // A parcela contratual real depende do mês de contemplação, reajustes e recomposição do saldo.
+    return initialInstallment * 2;
   }
 
   function applyIncomeBars(residential, commercial, shortStay) {
@@ -148,16 +174,20 @@
     const budget = parseMoney($('monthlyBudget').value);
     const capital = parseMoney($('availableCapital').value);
 
-    if (budget < 100) {
-      $('calculatorError').textContent = 'Informe um aporte mensal de pelo menos R$ 100,00 para fazer a simulação.';
+    const selectedPlan = findPlanForBudget(budget);
+    if (!selectedPlan) {
+      $('calculatorError').textContent = `A menor parcela disponível na tabela é ${money.format(PLANS[0].installment)} por mês.`;
       $('results').hidden = true;
       return;
     }
 
     $('calculatorError').textContent = '';
 
-    const credit = calculateCreditFromReducedPayment(budget);
-    const fullInstallment = calculateFullPayment(credit);
+    const credit = selectedPlan.credit;
+    const initialInstallment = selectedPlan.installment;
+    const term = selectedPlan.term;
+    const fullInstallment = calculatePostContemplationReference(initialInstallment);
+    const budgetGap = Math.max(0, budget - initialInstallment);
     const residentialRent = credit * MODEL.residentialRentRate;
     const commercialRent = credit * MODEL.highYieldRentRate;
     const shortStayRent = credit * MODEL.shortStayRentRate;
@@ -166,10 +196,10 @@
 
     const ownCapital = credit * MODEL.ownCapitalShare;
     const assetMultiple = credit / ownCapital;
-    const finalProperty = credit * Math.pow(1 + MODEL.annualAppreciationRate, MODEL.projectionYears);
+    const finalProperty = credit * Math.pow(1 + MODEL.annualAppreciationRate, MODEL.projectionMonths / 12);
     const appreciationGain = finalProperty - credit;
-    const grossRentFiveYears = commercialRent * MODEL.projectionYears * 12;
-    const economicGenerated = appreciationGain + grossRentFiveYears;
+    const grossRentSixtyMonths = commercialRent * MODEL.projectionMonths;
+    const economicGenerated = appreciationGain + grossRentSixtyMonths;
     const generatedMultiple = economicGenerated / ownCapital;
     const rentDifference = commercialRent - fullInstallment;
     const rentCoverage = commercialRent / fullInstallment;
@@ -178,21 +208,23 @@
       budget,
       capital,
       credit,
+      initialInstallment,
       fullInstallment,
       residentialRent,
       commercialRent,
       shortStayRent,
       saleLow,
       saleHigh,
-      term: MODEL.term,
+      term,
       ownCapital,
       assetMultiple,
       finalProperty,
-      grossRentFiveYears,
+      grossRentSixtyMonths,
       economicGenerated,
       generatedMultiple,
       rentDifference,
-      rentCoverage
+      rentCoverage,
+      budgetGap
     };
 
     const firstName = (state.lead?.name || '').trim().split(/\s+/)[0];
@@ -200,10 +232,11 @@
     setText('budgetBadge', `${wholeMoney.format(budget)}/mês`);
     setText('resultCreditHero', wholeMoney.format(credit));
     setText('resultCredit', money.format(credit));
-    setText('resultInstallment', money.format(budget));
+    setText('resultInstallment', money.format(initialInstallment));
     setText('resultFullInstallment', money.format(fullInstallment));
-    setText('resultTerm', `${MODEL.term} meses`);
-    setText('resultCreditNote', `50% do fundo comum + ${(MODEL.adminRate * 100).toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}% de taxa`);
+    setText('resultTerm', `${term} meses`);
+    setText('resultCreditNote', 'Faixa real selecionada na tabela de meia parcela');
+    setText('resultInstallmentNote', budgetGap > 0 ? `${money.format(budgetGap)} abaixo do limite informado` : 'Exatamente dentro do limite informado');
 
     if (capital > 0) {
       $('capitalNotice').hidden = false;
@@ -216,14 +249,14 @@
     setText('leverageAsset', money.format(credit));
     setText('leverageMultiplier', `${assetMultiple.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}× o capital próprio`);
     setText('leverageFinalProperty', money.format(finalProperty));
-    setText('leverageRentFiveYears', money.format(grossRentFiveYears));
+    setText('leverageRentFiveYears', money.format(grossRentSixtyMonths));
     setText('leverageGenerated', money.format(economicGenerated));
     setText('leverageGeneratedMultiple', `${generatedMultiple.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}× o capital próprio de referência`);
 
     setText('rentReferenceMonthly', `${money.format(commercialRent)}/mês`);
     setText('rentFullInstallment', `${money.format(fullInstallment)}/mês`);
     setText('rentDifference', `${rentDifference >= 0 ? '+' : ''}${money.format(rentDifference)}/mês`);
-    setText('rentCoverageText', `No cenário ilustrativo, o aluguel bruto representa ${percent.format(rentCoverage * 100)}% da parcela integral estimada.`);
+    setText('rentCoverageText', `No cenário ilustrativo, o aluguel bruto representa ${percent.format(rentCoverage * 100)}% da parcela de referência após a contemplação.`);
 
     setText('homeValue', money.format(credit));
     setText('traditionalRent', `${money.format(residentialRent)}/mês`);
@@ -253,8 +286,8 @@
       `WhatsApp cadastrado: ${state.lead?.whatsapp || 'Não informado'}`,
       `Aporte mensal: ${money.format(r.budget)}`,
       `Crédito imobiliário estimado: ${money.format(r.credit)}`,
-      `Parcela reduzida inicial: ${money.format(r.budget)}`,
-      `Parcela integral estimada: ${money.format(r.fullInstallment)}`,
+      `Parcela inicial até a contemplação: ${money.format(r.initialInstallment)}`,
+      `Parcela de referência após a contemplação: ${money.format(r.fullInstallment)}`,
       `Renda bruta ilustrativa de 1%: ${money.format(r.commercialRent)}/mês`,
       `Valor estimado do imóvel após 60 meses: ${money.format(r.finalProperty)}`,
       `Valorização e aluguéis brutos em 60 meses: ${money.format(r.economicGenerated)}`
@@ -359,7 +392,7 @@
     if (storedLead) unlockCalculator(storedLead);
 
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=121').catch(() => {}));
+      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=122').catch(() => {}));
     }
   }
 

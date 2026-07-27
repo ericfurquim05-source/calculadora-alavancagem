@@ -10,9 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Alavancagem">
   <title>Calculadora de Alavancagem Patrimonial</title>
-  <link rel="manifest" href="./manifest.json?v=121">
-  <link rel="apple-touch-icon" href="./icon-192.png?v=121">
-  <link rel="stylesheet" href="./estilos.css?v=121">
+  <link rel="manifest" href="./manifest.json?v=122">
+  <link rel="apple-touch-icon" href="./icon-192.png?v=122">
+  <link rel="stylesheet" href="./estilos.css?v=122">
 </head>
 <body>
   <div class="ambient ambient-one"></div>
@@ -196,19 +196,19 @@
               <small id="resultCreditNote">Modelo de meia parcela</small>
             </div>
             <div class="headline-card">
-              <span>Parcela reduzida inicial</span>
+              <span>Parcela inicial até a contemplação</span>
               <strong id="resultInstallment">R$ 0,00</strong>
-              <small>O aporte informado por você</small>
+              <small id="resultInstallmentNote">Faixa que cabe no valor informado</small>
             </div>
             <div class="headline-card">
-              <span>Parcela integral estimada</span>
+              <span>Parcela de referência após a contemplação</span>
               <strong id="resultFullInstallment">R$ 0,00</strong>
-              <small>Referência após a contemplação</small>
+              <small>Depois da compra, você passa a pagar pelo próprio imóvel</small>
             </div>
             <div class="headline-card">
               <span>Prazo de referência</span>
               <strong id="resultTerm">220 meses</strong>
-              <small>Premissa usada no cálculo</small>
+              <small>Prazo da faixa selecionada na tabela</small>
             </div>
           </div>
 
@@ -285,9 +285,9 @@
             </div>
             <div class="flow-arrow">ajuda a pagar</div>
             <div class="flow-card payment">
-              <span>Parcela integral estimada</span>
+              <span>Parcela após a contemplação</span>
               <strong id="rentFullInstallment">R$ 0,00/mês</strong>
-              <small>Referência matemática do plano</small>
+              <small>Referência simples do plano de meia parcela</small>
             </div>
           </div>
 
@@ -296,7 +296,7 @@
               <span>Diferença bruta antes de despesas</span>
               <strong id="rentDifference">R$ 0,00/mês</strong>
             </div>
-            <p id="rentCoverageText">O aluguel bruto representa 0% da parcela integral estimada.</p>
+            <p id="rentCoverageText">O aluguel bruto representa 0% da parcela de referência após a contemplação.</p>
           </div>
 
           <p class="fine-print">Na prática, é necessário descontar vacância, condomínio, IPTU, manutenção, impostos, seguro e administração. O aluguel não é garantido e pode não cobrir integralmente a parcela.</p>
@@ -351,7 +351,7 @@
             <article class="strategy-card liquidity">
               <div class="strategy-icon">💰</div>
               <div class="strategy-content">
-                <span>Liquidez com cota contemplada</span>
+                <span>Venda da carta contemplada</span>
                 <strong id="saleRange">R$ 0,00 a R$ 0,00</strong>
                 <p>Cenário comercial ilustrativo entre 20% e 40% do crédito, sujeito à operação, saldo e aprovação.</p>
               </div>
@@ -407,10 +407,10 @@
             <div class="method-copy">
               <div class="formula-box">
                 <span>Modelo utilizado</span>
-                <strong>Crédito = aporte × 220 ÷ (50% + 24,2%)</strong>
+                <strong>Selecionamos a maior parcela da tabela que cabe no valor informado</strong>
               </div>
-              <p>A parcela inicial considera 50% do fundo comum somado à taxa administrativa total de 24,2%, distribuídos no prazo de 220 meses.</p>
-              <p>A parcela integral é uma estimativa matemática do fundo comum completo mais a taxa administrativa. Reajustes, fundo de reserva, seguro, contemplação, lance e recomposição real dependem da proposta e do contrato.</p>
+              <p>A calculadora usa as faixas reais da planilha de meia parcela. Exemplo: com limite de R$ 2.000 por mês, a faixa selecionada é R$ 1.979, com crédito de R$ 700.000 e prazo de 220 meses.</p>
+              <p>A parcela inicial é válida até a contemplação. A referência após a contemplação considera duas vezes a meia parcela; o valor contratual real pode mudar conforme o mês da contemplação, reajustes, fundo de reserva, seguro e recomposição do saldo.</p>
               <p>A projeção de 60 meses utiliza 25% de capital próprio de referência, valorização de 4,82% ao ano e receita bruta de 1% ao mês. O valor econômico bruto soma valorização estimada e receita bruta acumulada, sem descontar despesas, parcelas, saldo devedor ou impostos.</p>
               <p>As projeções de aluguel e negociação de cota são cenários comerciais ilustrativos e não representam garantia de renda, contemplação ou resultado.</p>
             </div>
@@ -444,6 +444,6 @@
   </div>
 
   <div id="toast" class="toast" role="status"></div>
-  <script src="./app.js?v=121" defer></script>
+  <script src="./app.js?v=122" defer></script>
 </body>
 </html>
