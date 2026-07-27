@@ -2,7 +2,7 @@
   'use strict';
 
   const CONFIG = {
-    version: '1.2.0',
+    version: '1.2.1',
     leadEndpoint: 'https://formsubmit.co/ajax/empresasa187@gmail.com',
     whatsappNumber: '5551980554326',
     whatsappGroupUrl: '',
@@ -256,8 +256,8 @@
       `Parcela reduzida inicial: ${money.format(r.budget)}`,
       `Parcela integral estimada: ${money.format(r.fullInstallment)}`,
       `Renda bruta ilustrativa de 1%: ${money.format(r.commercialRent)}/mês`,
-      `Valor estimado do imóvel em 5 anos: ${money.format(r.finalProperty)}`,
-      `Valor econômico bruto ilustrativo em 5 anos: ${money.format(r.economicGenerated)}`
+      `Valor estimado do imóvel após 60 meses: ${money.format(r.finalProperty)}`,
+      `Valorização e aluguéis brutos em 60 meses: ${money.format(r.economicGenerated)}`
     ];
     if (r.capital > 0) lines.push(`Recurso próprio disponível: ${money.format(r.capital)}`);
     lines.push('Quero receber uma consultoria e um planejamento gratuitos com base no meu objetivo.');
@@ -359,7 +359,7 @@
     if (storedLead) unlockCalculator(storedLead);
 
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=120').catch(() => {}));
+      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=121').catch(() => {}));
     }
   }
 

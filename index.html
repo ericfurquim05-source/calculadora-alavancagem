@@ -10,9 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Alavancagem">
   <title>Calculadora de Alavancagem Patrimonial</title>
-  <link rel="manifest" href="./manifest.json?v=120">
-  <link rel="apple-touch-icon" href="./icon-192.png?v=120">
-  <link rel="stylesheet" href="./estilos.css?v=120">
+  <link rel="manifest" href="./manifest.json?v=121">
+  <link rel="apple-touch-icon" href="./icon-192.png?v=121">
+  <link rel="stylesheet" href="./estilos.css?v=121">
 </head>
 <body>
   <div class="ambient ambient-one"></div>
@@ -66,7 +66,7 @@
         <div class="gate-proof-grid" aria-label="O que você vai descobrir">
           <div><strong>20% a 30%</strong><span>Referência de capital próprio em uma estratégia de alavancagem</span></div>
           <div><strong>Até 1% a.m.</strong><span>Cenário ilustrativo de receita bruta em imóveis de maior rendimento</span></div>
-          <div><strong>5 anos</strong><span>Visão de valorização e renda para entender o crescimento patrimonial</span></div>
+          <div><strong>60 meses</strong><span>Visão de valorização e renda para entender o crescimento patrimonial</span></div>
         </div>
 
         <div class="leverage-visual">
@@ -168,7 +168,7 @@
           </article>
         </div>
         <div class="education-note">
-          <strong>Em cenários favoráveis, valorização e renda podem fazer o valor econômico gerado superar duas vezes o capital próprio de referência em cinco anos.</strong>
+          <strong>Em cenários favoráveis, a valorização e a renda do imóvel podem gerar mais de duas vezes o capital próprio de referência ao longo de 60 meses.</strong>
           <p>Isso não é promessa de lucro. Vacância, custos, saldo devedor, impostos e o contrato precisam ser considerados.</p>
         </div>
       </section>
@@ -224,21 +224,21 @@
         <article class="panel leverage-panel">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">VISÃO DE 5 ANOS</p>
-              <h2>Quanto esse patrimônio pode movimentar?</h2>
-              <p>Exemplo patrimonial usando 25% de capital próprio, valorização de 4,82% ao ano e renda bruta de 1% ao mês.</p>
+              <p class="eyebrow">PROJEÇÃO EM 60 MESES</p>
+              <h2>Com 25% do valor, você pode controlar 100% do imóvel</h2>
+              <p>Veja um exemplo direto: parte do valor vem do seu capital, o restante é estruturado no planejamento e o aluguel pode ajudar a pagar o imóvel.</p>
             </div>
           </div>
 
           <div class="leverage-summary">
             <div class="leverage-ratio">
-              <span>Capital próprio de referência</span>
+              <span>Seu capital de referência</span>
               <strong id="leverageOwnCapital">R$ 0,00</strong>
-              <small>25% do crédito estimado</small>
+              <small>25% do valor do imóvel</small>
             </div>
             <div class="ratio-arrow">→</div>
             <div class="leverage-ratio accent">
-              <span>Patrimônio controlado</span>
+              <span>Valor total do imóvel</span>
               <strong id="leverageAsset">R$ 0,00</strong>
               <small id="leverageMultiplier">0× o capital próprio</small>
             </div>
@@ -246,25 +246,25 @@
 
           <div class="leverage-kpis">
             <div class="leverage-kpi">
-              <span>Valor estimado do imóvel em 5 anos</span>
+              <span>Valor estimado do imóvel após 60 meses</span>
               <strong id="leverageFinalProperty">R$ 0,00</strong>
               <small>Com valorização ilustrativa de 4,82% a.a.</small>
             </div>
             <div class="leverage-kpi">
-              <span>Receita bruta acumulada em 5 anos</span>
+              <span>Aluguéis brutos acumulados em 60 meses</span>
               <strong id="leverageRentFiveYears">R$ 0,00</strong>
               <small>Referência de 1% ao mês, antes de custos</small>
             </div>
             <div class="leverage-kpi highlighted">
-              <span>Valor econômico bruto gerado</span>
+              <span>Valorização + aluguéis brutos</span>
               <strong id="leverageGenerated">R$ 0,00</strong>
               <small id="leverageGeneratedMultiple">0× o capital próprio de referência</small>
             </div>
           </div>
 
           <div class="leverage-explanation">
-            <strong>O ponto principal:</strong>
-            <p>Você não precisa ter o valor total do imóvel para começar o planejamento. A estratégia usa uma parcela do capital, o crédito e a renda do ativo para acelerar a construção patrimonial.</p>
+            <strong>Em resumo:</strong>
+            <p>Você entra com uma parte do valor, controla um imóvel maior e pode usar a renda do inquilino para ajudar no pagamento enquanto o patrimônio se valoriza.</p>
           </div>
         </article>
 
@@ -342,7 +342,7 @@
             <article class="strategy-card shortstay">
               <div class="strategy-icon">🛎️</div>
               <div class="strategy-content">
-                <span>Short Stay / temporada</span>
+                <span>Short Stay / Airbnb</span>
                 <strong id="shortStayRent">R$ 0,00/mês</strong>
                 <p id="shortStayRentAnnual">R$ 0,00 por ano em receita bruta ilustrativa de 1% ao mês.</p>
               </div>
@@ -389,7 +389,7 @@
               <strong id="commercialBarValue">R$ 0,00</strong>
             </div>
             <div class="income-row">
-              <div><span>Short Stay / temporada</span><small>1,00% ao mês</small></div>
+              <div><span>Short Stay / Airbnb</span><small>1,00% ao mês</small></div>
               <div class="income-track"><i id="shortStayBar"></i></div>
               <strong id="shortStayBarValue">R$ 0,00</strong>
             </div>
@@ -411,7 +411,7 @@
               </div>
               <p>A parcela inicial considera 50% do fundo comum somado à taxa administrativa total de 24,2%, distribuídos no prazo de 220 meses.</p>
               <p>A parcela integral é uma estimativa matemática do fundo comum completo mais a taxa administrativa. Reajustes, fundo de reserva, seguro, contemplação, lance e recomposição real dependem da proposta e do contrato.</p>
-              <p>A visão de cinco anos utiliza 25% de capital próprio de referência, valorização de 4,82% ao ano e receita bruta de 1% ao mês. O valor econômico bruto soma valorização estimada e receita bruta acumulada, sem descontar despesas, parcelas, saldo devedor ou impostos.</p>
+              <p>A projeção de 60 meses utiliza 25% de capital próprio de referência, valorização de 4,82% ao ano e receita bruta de 1% ao mês. O valor econômico bruto soma valorização estimada e receita bruta acumulada, sem descontar despesas, parcelas, saldo devedor ou impostos.</p>
               <p>As projeções de aluguel e negociação de cota são cenários comerciais ilustrativos e não representam garantia de renda, contemplação ou resultado.</p>
             </div>
           </details>
@@ -444,6 +444,6 @@
   </div>
 
   <div id="toast" class="toast" role="status"></div>
-  <script src="./app.js?v=120" defer></script>
+  <script src="./app.js?v=121" defer></script>
 </body>
 </html>

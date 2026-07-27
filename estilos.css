@@ -182,7 +182,7 @@ footer{text-align:center;color:#748397;font-size:11px;line-height:1.5;padding:28
   .headline-card span,.headline-card small,.strategy-card span,.strategy-card p,.section-heading p,.capital-notice span,.capital-notice p,.cost-warning p{color:#555}
 }
 
-/* v1.2.0 — aprofundamento da experiência e da alavancagem patrimonial */
+/* v1.2.1 — aprofundamento da experiência e da alavancagem patrimonial */
 .gate-card-expanded{width:min(1180px,100%);grid-template-columns:1.2fr .8fr;align-items:start}
 .gate-card-expanded .lead-form{position:sticky;top:24px;margin-top:4px}
 .gate-proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0 18px}

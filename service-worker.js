@@ -1,12 +1,12 @@
-const CACHE_NAME = 'calculadora-alavancagem-v1-2-0';
+const CACHE_NAME = 'calculadora-alavancagem-v1-2-1';
 const ASSETS = [
   './',
   './index.html',
-  './estilos.css?v=120',
-  './app.js?v=120',
-  './manifest.json?v=120',
-  './icon-192.png?v=120',
-  './icon-512.png?v=120',
+  './estilos.css?v=121',
+  './app.js?v=121',
+  './manifest.json?v=121',
+  './icon-192.png?v=121',
+  './icon-512.png?v=121',
   './reset.html'
 ];
 

@@ -1,4 +1,4 @@
-CALCULADORA DE ALAVANCAGEM PATRIMONIAL — VERSÃO 1.2.0
+CALCULADORA DE ALAVANCAGEM PATRIMONIAL — VERSÃO 1.2.1
 
 ATUALIZAÇÃO NO GITHUB
 1. Abra o repositório calculadora-alavancagem.
@@ -12,9 +12,9 @@ O QUE MUDOU
 - A página inicial explica com mais clareza o que a pessoa recebe ao acessar.
 - Foi adicionada uma explicação completa de alavancagem patrimonial.
 - A estratégia usa 25% de capital próprio como referência intermediária entre 20% e 30%.
-- Nova visão de cinco anos com valorização, renda bruta e valor econômico gerado.
+- Nova projeção de 60 meses com valorização, renda bruta e valor econômico gerado.
 - Novo comparativo mostrando como o aluguel pode ajudar a pagar a parcela integral.
-- Salas comerciais, galpões e Short Stay usam o cenário ilustrativo de 1% bruto ao mês.
+- Salas comerciais, galpões e Short Stay / Airbnb usam o cenário ilustrativo de 1% bruto ao mês.
 - Locação residencial usa cenário ilustrativo de 0,50% bruto ao mês.
 - O final da página reforça consultoria e planejamento totalmente gratuitos.
 - O resumo enviado ao WhatsApp inclui os principais números da simulação.
@@ -34,7 +34,7 @@ IMPORTANTE: valor econômico bruto não significa lucro líquido. Não são desc
 CENÁRIOS ILUSTRATIVOS DE RENDA BRUTA
 - Locação residencial: 0,50% ao mês.
 - Salas comerciais e galpões: 1,00% ao mês.
-- Short Stay: 1,00% ao mês.
+- Short Stay / Airbnb: 1,00% ao mês.
 - Liquidez com cota contemplada: referência de 20% a 40% do crédito.
 
 CAPTURA DE LEADS
