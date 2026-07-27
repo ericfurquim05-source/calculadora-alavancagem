@@ -1,0 +1,14 @@
+{
+  "name": "Calculadora de Alavancagem",
+  "short_name": "Alavancagem",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07101a",
+  "theme_color": "#09121d",
+  "description": "Descubra quanto patrimônio seu orçamento pode movimentar.",
+  "icons": [
+    {"src":"./icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"./icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}

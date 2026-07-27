@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#09121d">
+  <meta name="description" content="Calculadora de Alavancagem: descubra quanto patrimônio seu orçamento pode movimentar.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Alavancagem">
+  <title>Calculadora de Alavancagem</title>
+  <link rel="manifest" href="./manifest.json?v=100">
+  <link rel="apple-touch-icon" href="./icon-192.png?v=100">
+  <link rel="stylesheet" href="./estilos.css?v=100">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <section id="leadGate" class="gate-shell" aria-labelledby="gateTitle">
+    <div class="gate-card">
+      <div class="brand-row">
+        <div class="brand-mark">CA</div>
+        <div>
+          <p class="eyebrow">PLANEJAMENTO PATRIMONIAL</p>
+          <h1 id="gateTitle">Calculadora de Alavancagem</h1>
+        </div>
+      </div>
+
+      <div class="gate-copy">
+        <span class="tag">Acesso gratuito</span>
+        <h2>Descubra quanto patrimônio seu orçamento pode movimentar.</h2>
+        <p>Compare compra à vista, crédito planejado, renda com aluguel e projeção patrimonial em poucos passos.</p>
+      </div>
+
+      <div class="gate-benefits" aria-label="Benefícios">
+        <div><span>01</span><p>Crédito compatível com sua parcela mensal</p></div>
+        <div><span>02</span><p>Comparativo de caminhos para o mesmo capital</p></div>
+        <div><span>03</span><p>Resumo pronto para conversar com um especialista</p></div>
+      </div>
+
+      <form id="leadForm" class="lead-form" novalidate>
+        <div class="field">
+          <label for="leadName">Seu nome</label>
+          <input id="leadName" name="nome" type="text" maxlength="80" placeholder="Ex.: João da Silva" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="leadEmail">Seu e-mail</label>
+          <input id="leadEmail" name="email" type="email" maxlength="120" placeholder="voce@email.com" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="leadPhone">WhatsApp <span>opcional</span></label>
+          <input id="leadPhone" name="whatsapp" type="tel" maxlength="20" placeholder="(51) 99999-9999" autocomplete="tel">
+        </div>
+        <label class="consent">
+          <input id="leadConsent" type="checkbox" required>
+          <span>Autorizo o contato da equipe sobre esta simulação. Meus dados serão usados somente para atendimento.</span>
+        </label>
+        <button id="leadSubmit" class="primary-button" type="submit">Acessar a calculadora</button>
+        <p id="leadStatus" class="form-status" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <div id="app" class="app-shell" hidden>
+    <header class="app-header">
+      <div class="brand-row compact">
+        <div class="brand-mark">CA</div>
+        <div>
+          <h1>Calculadora de Alavancagem</h1>
+          <p>Veja o que seu capital e sua parcela podem movimentar</p>
+        </div>
+      </div>
+      <button id="changeLeadBtn" class="ghost-button small" type="button">Trocar cadastro</button>
+    </header>
+
+    <main>
+      <section class="panel hero-panel">
+        <p class="eyebrow">SUA ESTRATÉGIA</p>
+        <h2>Comece pelos dois números que você já conhece.</h2>
+        <p class="lead">Informe o capital disponível hoje e quanto cabe no seu orçamento mensal. A calculadora localiza a melhor faixa cadastrada sem inventar valores entre as opções.</p>
+
+        <form id="calculatorForm" class="calculator-form">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="monthlyBudget">Quanto você pode investir por mês?</label>
+              <div class="money-control"><span>R$</span><input id="monthlyBudget" type="text" inputmode="numeric" value="1.700" autocomplete="off"></div>
+              <small>Usamos a maior parcela da tabela que não ultrapassa esse orçamento.</small>
+            </div>
+
+            <div class="field full">
+              <label for="availableCapital">Quanto você tem disponível hoje?</label>
+              <div class="money-control"><span>R$</span><input id="availableCapital" type="text" inputmode="numeric" value="100.000" autocomplete="off"></div>
+              <small>Esse valor pode ser usado à vista, como complemento ou preservado conforme a estratégia.</small>
+            </div>
+
+            <div class="field">
+              <label for="propertyType">Tipo de patrimônio</label>
+              <select id="propertyType">
+                <option value="residential">Imóvel residencial</option>
+                <option value="commercial">Comercial / sala / galpão</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="horizonYears">Horizonte da projeção</label>
+              <select id="horizonYears">
+                <option value="5">5 anos</option>
+                <option value="10" selected>10 anos</option>
+                <option value="15">15 anos</option>
+                <option value="20">20 anos</option>
+              </select>
+            </div>
+          </div>
+
+          <details class="assumptions">
+            <summary><span>Premissas editáveis</span><small>Aluguel e valorização</small></summary>
+            <div class="form-grid assumptions-grid">
+              <div class="field">
+                <label for="rentRate">Aluguel estimado</label>
+                <div class="suffix-control"><input id="rentRate" type="number" value="0.50" min="0" max="5" step="0.05"><span>% a.m.</span></div>
+              </div>
+              <div class="field">
+                <label for="appreciationRate">Valorização do imóvel</label>
+                <div class="suffix-control"><input id="appreciationRate" type="number" value="5.00" min="0" max="30" step="0.10"><span>% a.a.</span></div>
+              </div>
+            </div>
+          </details>
+
+          <button class="primary-button" type="submit">Calcular possibilidades</button>
+          <p id="calculatorError" class="form-status error" role="alert"></p>
+        </form>
+      </section>
+
+      <section id="results" class="result-stack" hidden>
+        <article class="panel result-hero">
+          <div class="result-topline">
+            <div>
+              <p class="eyebrow">RESULTADO PERSONALIZADO</p>
+              <h2 id="resultGreeting">Veja o que seu orçamento pode movimentar</h2>
+            </div>
+            <span id="budgetBadge" class="pill">R$ 0/mês</span>
+          </div>
+
+          <div class="headline-grid">
+            <div class="headline-card highlighted">
+              <span>Crédito dentro do orçamento</span>
+              <strong id="resultCredit">R$ 0,00</strong>
+              <small id="resultTerm">—</small>
+            </div>
+            <div class="headline-card">
+              <span>Parcela cadastrada</span>
+              <strong id="resultInstallment">R$ 0,00</strong>
+              <small id="resultBudgetGap">—</small>
+            </div>
+            <div class="headline-card gain-card">
+              <span>Poder de compra combinado</span>
+              <strong id="resultCombined">R$ 0,00</strong>
+              <small>Capital informado + crédito planejado</small>
+            </div>
+            <div class="headline-card">
+              <span>Aluguel mensal estimado</span>
+              <strong id="resultRent">R$ 0,00</strong>
+              <small id="resultRentRate">—</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel paths-panel">
+          <p class="eyebrow">CAMINHOS POSSÍVEIS</p>
+          <h2>O que você pode fazer com esses valores</h2>
+          <div class="path-grid">
+            <div class="path-card">
+              <div class="path-icon">🏠</div>
+              <div>
+                <span>Compra à vista</span>
+                <strong id="cashPathValue">R$ 0,00</strong>
+                <p>Seu capital disponível como poder de compra imediato.</p>
+              </div>
+            </div>
+            <div class="path-card">
+              <div class="path-icon">📑</div>
+              <div>
+                <span>Compra planejada</span>
+                <strong id="plannedPathValue">R$ 0,00</strong>
+                <p>Crédito correspondente à faixa de parcela encontrada.</p>
+              </div>
+            </div>
+            <div class="path-card featured">
+              <div class="path-icon">📈</div>
+              <div>
+                <span>Alavancagem patrimonial</span>
+                <strong id="leveragePathValue">R$ 0,00</strong>
+                <p>Capital e crédito juntos, caso o capital seja usado como complemento.</p>
+              </div>
+            </div>
+            <div class="path-card">
+              <div class="path-icon">🔑</div>
+              <div>
+                <span>Renda com aluguel</span>
+                <strong id="rentPathValue">R$ 0,00/mês</strong>
+                <p>Estimativa baseada na premissa de aluguel escolhida.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel projection-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">PROJEÇÃO PATRIMONIAL</p>
+              <h2 id="projectionTitle">Cenário em 10 anos</h2>
+            </div>
+          </div>
+          <div class="projection-card">
+            <span>Valor projetado do patrimônio</span>
+            <strong id="futurePropertyValue">R$ 0,00</strong>
+            <small id="futureRentValue">Aluguel projetado: R$ 0,00/mês</small>
+          </div>
+          <div class="progress-comparison">
+            <div>
+              <span>Capital disponível hoje</span>
+              <div class="progress-track"><i id="cashBar"></i></div>
+              <b id="cashBarValue">R$ 0,00</b>
+            </div>
+            <div>
+              <span>Poder de compra planejado</span>
+              <div class="progress-track"><i id="combinedBar"></i></div>
+              <b id="combinedBarValue">R$ 0,00</b>
+            </div>
+            <div>
+              <span>Patrimônio projetado</span>
+              <div class="progress-track"><i id="futureBar"></i></div>
+              <b id="futureBarValue">R$ 0,00</b>
+            </div>
+          </div>
+        </article>
+
+        <article id="nextBandPanel" class="panel next-panel">
+          <p class="eyebrow">PRÓXIMO DEGRAU</p>
+          <h2>Quanto falta para acessar a próxima faixa?</h2>
+          <div class="next-band-grid">
+            <div><span>Próximo crédito</span><strong id="nextCredit">R$ 0,00</strong></div>
+            <div><span>Próxima parcela</span><strong id="nextInstallment">R$ 0,00</strong></div>
+            <div class="accent"><span>Acréscimo mensal necessário</span><strong id="nextDifference">R$ 0,00</strong></div>
+          </div>
+        </article>
+
+        <article class="panel source-panel">
+          <details>
+            <summary><span>Como o cálculo foi feito?</span><small>Ver metodologia</small></summary>
+            <div class="method-copy">
+              <p>A tabela trabalha com faixas fechadas. A calculadora escolhe a maior parcela cadastrada que não ultrapassa seu orçamento e mostra a faixa seguinte separadamente.</p>
+              <p>Não existe interpolação entre as faixas. Taxa administrativa, fundo de reserva, seguro, reajustes, contemplação, lance e custo total dependem da proposta e do contrato.</p>
+            </div>
+          </details>
+        </article>
+
+        <article class="panel cta-panel">
+          <div>
+            <p class="eyebrow">PRÓXIMO PASSO</p>
+            <h2>Transforme a simulação em uma estratégia personalizada.</h2>
+            <p>Fale com nossa equipe para receber uma assessoria totalmente gratuita e entender as opções disponíveis para o seu objetivo.</p>
+          </div>
+          <div class="cta-actions">
+            <button id="advisoryBtn" class="primary-button" type="button">Quero assessoria gratuita</button>
+            <button id="groupBtn" class="secondary-button whatsapp" type="button">Entrar no grupo do WhatsApp</button>
+            <button id="shareBtn" class="secondary-button" type="button">Compartilhar meu resultado</button>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>Simulação ilustrativa. Os valores dependem das condições comerciais, contratuais e da disponibilidade das faixas.</p>
+      <p>Atendimento: Eric Furquin · WhatsApp (51) 98055-4326</p>
+    </footer>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="./app.js?v=100" defer></script>
+</body>
+</html>

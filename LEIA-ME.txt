@@ -1,0 +1,33 @@
+CALCULADORA DE ALAVANCAGEM — VERSÃO 1.0.0
+
+PUBLICAÇÃO
+1. Extraia o ZIP.
+2. Envie todos os arquivos soltos para a raiz do novo repositório/site.
+3. Abra reset.html uma vez depois da publicação.
+
+CAPTURA DE LEADS
+O formulário está preparado para enviar nome, e-mail e WhatsApp ao endereço:
+empresasa187@gmail.com
+
+Ele usa o endpoint AJAX do FormSubmit. No primeiro teste, o serviço pode enviar um e-mail de confirmação para ativar o recebimento.
+
+WHATSAPP
+Contato configurado: 55 51 98055-4326.
+
+LINK DO GRUPO
+No arquivo app.js, procure:
+whatsappGroupUrl: ''
+
+Cole o link completo do grupo entre as aspas. Enquanto o campo estiver vazio, o botão abre uma conversa com a equipe pedindo acesso ao grupo.
+
+BASE DOS CÁLCULOS
+A calculadora usa as faixas dos arquivos enviados:
+- TABELA CRÉDITO X PARCELA - SI CONSÓRCIOS.xlsx
+- Planilha_Base_SI_Consorcios(1).xlsx
+- Memoria_de_Calculo_Simulacoes_SI.xlsx
+- Auditoria_Completa_Tabela_SI_Consorcios.xlsx
+
+Regra: selecionar a maior parcela cadastrada que não ultrapassa o orçamento informado. Não há interpolação entre faixas.
+
+IMPORTANTE
+Aluguel e valorização são premissas editáveis e ilustrativas. A tabela não contém taxa administrativa, fundo de reserva, seguro, reajuste, regras de contemplação, lance ou custo total. Esses dados devem ser conferidos na proposta e no contrato.
