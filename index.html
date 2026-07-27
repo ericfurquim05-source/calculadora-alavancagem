@@ -4,23 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#09121d">
-  <meta name="description" content="Calculadora de Alavancagem: descubra o crédito imobiliário que seu aporte mensal pode movimentar e compare estratégias.">
+  <meta name="description" content="Calculadora de Alavancagem Patrimonial: descubra quanto patrimônio seu aporte mensal pode movimentar e compare estratégias imobiliárias.">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Alavancagem">
-  <title>Calculadora de Alavancagem</title>
-  <link rel="manifest" href="./manifest.json?v=110">
-  <link rel="apple-touch-icon" href="./icon-192.png?v=110">
-  <link rel="stylesheet" href="./estilos.css?v=110">
+  <title>Calculadora de Alavancagem Patrimonial</title>
+  <link rel="manifest" href="./manifest.json?v=120">
+  <link rel="apple-touch-icon" href="./icon-192.png?v=120">
+  <link rel="stylesheet" href="./estilos.css?v=120">
 </head>
 <body>
   <div class="ambient ambient-one"></div>
   <div class="ambient ambient-two"></div>
 
   <section id="leadGate" class="gate-shell" aria-labelledby="gateTitle">
-    <div class="gate-card">
-      <div class="gate-intro">
+    <div class="gate-card gate-card-expanded">
+      <div class="gate-intro gate-hero">
         <div class="brand-row">
           <div class="brand-mark">CA</div>
           <div>
@@ -30,15 +30,9 @@
         </div>
 
         <div class="gate-copy">
-          <span class="tag">Acesso gratuito</span>
-          <h2>Descubra o que seu aporte mensal pode construir.</h2>
-          <p>Veja quanto crédito imobiliário pode planejar e compare caminhos para moradia, renda, patrimônio e liquidez.</p>
-        </div>
-
-        <div class="gate-benefits" aria-label="Benefícios">
-          <div><span>01</span><p>Crédito estimado a partir do seu aporte mensal</p></div>
-          <div><span>02</span><p>Comparativos simples de estratégias imobiliárias</p></div>
-          <div><span>03</span><p>Assessoria gratuita para montar o próximo passo</p></div>
+          <span class="tag">Acesso e planejamento gratuitos</span>
+          <h2>Descubra como transformar seu aporte mensal em patrimônio e renda.</h2>
+          <p>A calculadora mostra o crédito imobiliário estimado, o potencial de renda e diferentes caminhos para comprar, alugar, construir ou ampliar patrimônio.</p>
         </div>
       </div>
 
@@ -52,6 +46,10 @@
           <input id="leadName" name="nome" type="text" maxlength="80" placeholder="Ex.: João da Silva" autocomplete="name" required>
         </div>
         <div class="field">
+          <label for="leadWhatsapp">Seu WhatsApp</label>
+          <input id="leadWhatsapp" name="whatsapp" type="tel" inputmode="tel" maxlength="15" placeholder="(51) 99999-9999" autocomplete="tel" required>
+        </div>
+        <div class="field">
           <label for="leadEmail">Seu e-mail</label>
           <input id="leadEmail" name="email" type="email" maxlength="120" placeholder="voce@email.com" autocomplete="email" required>
         </div>
@@ -60,8 +58,39 @@
           <span>Autorizo o uso destes dados para liberar a simulação e receber contato sobre o resultado.</span>
         </label>
         <button id="leadSubmit" class="primary-button" type="submit">Acessar gratuitamente</button>
+        <p class="privacy-note">Seus dados serão usados apenas para liberar a análise e permitir o atendimento da equipe.</p>
         <p id="leadStatus" class="form-status" role="status"></p>
       </form>
+
+      <div class="gate-details">
+        <div class="gate-proof-grid" aria-label="O que você vai descobrir">
+          <div><strong>20% a 30%</strong><span>Referência de capital próprio em uma estratégia de alavancagem</span></div>
+          <div><strong>Até 1% a.m.</strong><span>Cenário ilustrativo de receita bruta em imóveis de maior rendimento</span></div>
+          <div><strong>5 anos</strong><span>Visão de valorização e renda para entender o crescimento patrimonial</span></div>
+        </div>
+
+        <div class="leverage-visual">
+          <div class="leverage-visual-head">
+            <span>Como funciona a alavancagem patrimonial</span>
+            <strong>Você usa uma parte do capital e controla um ativo maior.</strong>
+          </div>
+          <div class="leverage-visual-track" aria-hidden="true">
+            <i class="own"></i><i class="planned"></i>
+          </div>
+          <div class="leverage-visual-labels">
+            <span><b>20%–30%</b> recursos próprios</span>
+            <span><b>70%–80%</b> planejamento e fluxo do ativo</span>
+          </div>
+          <p>Em um cenário bem estruturado, a renda do imóvel pode ajudar a pagar as parcelas enquanto o patrimônio se valoriza. Os números são ilustrativos e dependem da operação real.</p>
+        </div>
+
+        <div class="gate-benefits" aria-label="Benefícios">
+          <div><span>01</span><p>Crédito estimado a partir do valor que cabe no seu bolso</p></div>
+          <div><span>02</span><p>Comparação entre moradia, locação residencial, salas comerciais e galpões</p></div>
+          <div><span>03</span><p>Exemplo de renda bruta de 1% ao mês em imóveis com maior potencial</p></div>
+          <div><span>04</span><p>Planejamento personalizado e consultoria totalmente gratuitos</p></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -82,7 +111,12 @@
         <div class="hero-copy">
           <p class="eyebrow">COMECE PELO QUE CABE NO SEU BOLSO</p>
           <h2>Quanto você consegue investir por mês?</h2>
-          <p class="lead">Informe apenas o valor mensal. A calculadora usa o mesmo modelo de parcela reduzida do Simulador de Consórcio para estimar o crédito.</p>
+          <p class="lead">A partir do seu aporte, calculamos um crédito imobiliário estimado usando o modelo de parcela reduzida do Simulador de Consórcio.</p>
+          <div class="hero-mini-points">
+            <span>✓ Crédito estimado</span>
+            <span>✓ Renda de aluguel</span>
+            <span>✓ Projeção patrimonial</span>
+          </div>
         </div>
 
         <form id="calculatorForm" class="calculator-form">
@@ -98,14 +132,45 @@
               <div class="field">
                 <label for="availableCapital">Recurso disponível hoje</label>
                 <div class="money-control"><span>R$</span><input id="availableCapital" type="text" inputmode="numeric" placeholder="0" autocomplete="off"></div>
-                <small>Este valor é mostrado separadamente. Ele não é somado automaticamente ao crédito.</small>
+                <small>O valor será analisado separadamente para lance, documentação, reforma ou complemento.</small>
               </div>
             </div>
           </details>
 
-          <button class="primary-button calculate-button" type="submit">Descobrir o que posso fazer</button>
+          <button class="primary-button calculate-button" type="submit">Descobrir meu potencial</button>
           <p id="calculatorError" class="form-status error" role="alert"></p>
         </form>
+      </section>
+
+      <section class="panel education-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">A ESTRATÉGIA EM 3 PASSOS</p>
+            <h2>Como a alavancagem patrimonial funciona?</h2>
+            <p>O objetivo não é apenas comprar um imóvel. É usar o planejamento para controlar um patrimônio maior do que o capital disponível hoje.</p>
+          </div>
+        </div>
+        <div class="steps-grid">
+          <article class="step-card">
+            <span>1</span>
+            <strong>Você define o aporte</strong>
+            <p>Começamos pelo valor mensal que cabe no seu orçamento, sem comprometer todo o seu capital.</p>
+          </article>
+          <article class="step-card">
+            <span>2</span>
+            <strong>Estrutura o crédito</strong>
+            <p>O aporte é transformado em um potencial de crédito imobiliário para comprar ou construir um ativo.</p>
+          </article>
+          <article class="step-card">
+            <span>3</span>
+            <strong>O ativo ajuda no fluxo</strong>
+            <p>Em imóveis de renda, o aluguel pode contribuir para pagar as parcelas e acelerar a formação patrimonial.</p>
+          </article>
+        </div>
+        <div class="education-note">
+          <strong>Em cenários favoráveis, valorização e renda podem fazer o valor econômico gerado superar duas vezes o capital próprio de referência em cinco anos.</strong>
+          <p>Isso não é promessa de lucro. Vacância, custos, saldo devedor, impostos e o contrato precisam ser considerados.</p>
+        </div>
       </section>
 
       <section id="results" class="result-stack" hidden>
@@ -156,6 +221,87 @@
           </div>
         </article>
 
+        <article class="panel leverage-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">VISÃO DE 5 ANOS</p>
+              <h2>Quanto esse patrimônio pode movimentar?</h2>
+              <p>Exemplo patrimonial usando 25% de capital próprio, valorização de 4,82% ao ano e renda bruta de 1% ao mês.</p>
+            </div>
+          </div>
+
+          <div class="leverage-summary">
+            <div class="leverage-ratio">
+              <span>Capital próprio de referência</span>
+              <strong id="leverageOwnCapital">R$ 0,00</strong>
+              <small>25% do crédito estimado</small>
+            </div>
+            <div class="ratio-arrow">→</div>
+            <div class="leverage-ratio accent">
+              <span>Patrimônio controlado</span>
+              <strong id="leverageAsset">R$ 0,00</strong>
+              <small id="leverageMultiplier">0× o capital próprio</small>
+            </div>
+          </div>
+
+          <div class="leverage-kpis">
+            <div class="leverage-kpi">
+              <span>Valor estimado do imóvel em 5 anos</span>
+              <strong id="leverageFinalProperty">R$ 0,00</strong>
+              <small>Com valorização ilustrativa de 4,82% a.a.</small>
+            </div>
+            <div class="leverage-kpi">
+              <span>Receita bruta acumulada em 5 anos</span>
+              <strong id="leverageRentFiveYears">R$ 0,00</strong>
+              <small>Referência de 1% ao mês, antes de custos</small>
+            </div>
+            <div class="leverage-kpi highlighted">
+              <span>Valor econômico bruto gerado</span>
+              <strong id="leverageGenerated">R$ 0,00</strong>
+              <small id="leverageGeneratedMultiple">0× o capital próprio de referência</small>
+            </div>
+          </div>
+
+          <div class="leverage-explanation">
+            <strong>O ponto principal:</strong>
+            <p>Você não precisa ter o valor total do imóvel para começar o planejamento. A estratégia usa uma parcela do capital, o crédito e a renda do ativo para acelerar a construção patrimonial.</p>
+          </div>
+        </article>
+
+        <article class="panel rent-payment-panel">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">O INQUILINO AJUDA NO FLUXO</p>
+              <h2>Exemplo de imóvel com renda bruta de 1% ao mês</h2>
+              <p>Salas comerciais, galpões, operações empresariais e alguns imóveis de curta temporada podem ser estudados com essa referência ilustrativa.</p>
+            </div>
+          </div>
+
+          <div class="rent-flow">
+            <div class="flow-card income">
+              <span>Receita bruta estimada</span>
+              <strong id="rentReferenceMonthly">R$ 0,00/mês</strong>
+              <small>1% do valor do imóvel</small>
+            </div>
+            <div class="flow-arrow">ajuda a pagar</div>
+            <div class="flow-card payment">
+              <span>Parcela integral estimada</span>
+              <strong id="rentFullInstallment">R$ 0,00/mês</strong>
+              <small>Referência matemática do plano</small>
+            </div>
+          </div>
+
+          <div class="rent-callout">
+            <div>
+              <span>Diferença bruta antes de despesas</span>
+              <strong id="rentDifference">R$ 0,00/mês</strong>
+            </div>
+            <p id="rentCoverageText">O aluguel bruto representa 0% da parcela integral estimada.</p>
+          </div>
+
+          <p class="fine-print">Na prática, é necessário descontar vacância, condomínio, IPTU, manutenção, impostos, seguro e administração. O aluguel não é garantido e pode não cobrir integralmente a parcela.</p>
+        </article>
+
         <article class="panel strategy-panel">
           <div class="section-heading">
             <div>
@@ -171,25 +317,25 @@
               <div class="strategy-content">
                 <span>Moradia e patrimônio</span>
                 <strong id="homeValue">R$ 0,00</strong>
-                <p>Comprar casa, apartamento, terreno, construir, reformar ou ampliar, conforme as regras da administradora.</p>
+                <p>Comprar casa, apartamento, terreno, construir, reformar ou ampliar. O ganho principal é patrimonial e de qualidade de vida.</p>
               </div>
             </article>
 
             <article class="strategy-card rent">
               <div class="strategy-icon">🔑</div>
               <div class="strategy-content">
-                <span>Locação tradicional</span>
+                <span>Locação residencial</span>
                 <strong id="traditionalRent">R$ 0,00/mês</strong>
-                <p id="traditionalRentAnnual">R$ 0,00 por ano em receita bruta ilustrativa.</p>
+                <p id="traditionalRentAnnual">R$ 0,00 por ano em receita bruta ilustrativa de 0,50% ao mês.</p>
               </div>
             </article>
 
-            <article class="strategy-card commercial">
+            <article class="strategy-card commercial featured">
               <div class="strategy-icon">🏢</div>
               <div class="strategy-content">
-                <span>Imóvel comercial</span>
+                <span>Salas comerciais e galpões</span>
                 <strong id="commercialRent">R$ 0,00/mês</strong>
-                <p id="commercialRentAnnual">R$ 0,00 por ano em receita bruta ilustrativa.</p>
+                <p id="commercialRentAnnual">R$ 0,00 por ano em receita bruta ilustrativa de 1% ao mês.</p>
               </div>
             </article>
 
@@ -198,11 +344,11 @@
               <div class="strategy-content">
                 <span>Short Stay / temporada</span>
                 <strong id="shortStayRent">R$ 0,00/mês</strong>
-                <p id="shortStayRentAnnual">R$ 0,00 por ano em receita bruta ilustrativa.</p>
+                <p id="shortStayRentAnnual">R$ 0,00 por ano em receita bruta ilustrativa de 1% ao mês.</p>
               </div>
             </article>
 
-            <article class="strategy-card liquidity featured">
+            <article class="strategy-card liquidity">
               <div class="strategy-icon">💰</div>
               <div class="strategy-content">
                 <span>Liquidez com cota contemplada</span>
@@ -214,9 +360,9 @@
             <article class="strategy-card business">
               <div class="strategy-icon">🏗️</div>
               <div class="strategy-content">
-                <span>Projeto empresarial</span>
+                <span>Projeto empresarial / BTS</span>
                 <strong id="businessValue">R$ 0,00</strong>
-                <p>Sala, loja, consultório, galpão ou construção sob medida para uma operação empresarial.</p>
+                <p>Sala, loja, consultório, galpão ou construção sob medida para uma empresa locatária.</p>
               </div>
             </article>
           </div>
@@ -225,25 +371,25 @@
         <article class="panel comparison-panel">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">QUANTO PODE GERAR</p>
-              <h2>Comparativo de renda bruta mensal</h2>
-              <p>Os percentuais abaixo são cenários ilustrativos, antes de despesas.</p>
+              <p class="eyebrow">COMPARATIVO DE RENDA</p>
+              <h2>Nem todo imóvel rende da mesma forma</h2>
+              <p>Moradia costuma priorizar segurança e uso. Imóveis comerciais e operações de renda podem buscar retornos brutos maiores.</p>
             </div>
           </div>
 
           <div class="income-comparison">
             <div class="income-row">
-              <div><span>Locação tradicional</span><small>0,50% ao mês</small></div>
+              <div><span>Locação residencial</span><small>0,50% ao mês</small></div>
               <div class="income-track"><i id="traditionalBar"></i></div>
               <strong id="traditionalBarValue">R$ 0,00</strong>
             </div>
             <div class="income-row">
-              <div><span>Imóvel comercial</span><small>0,70% ao mês</small></div>
+              <div><span>Salas comerciais e galpões</span><small>1,00% ao mês</small></div>
               <div class="income-track"><i id="commercialBar"></i></div>
               <strong id="commercialBarValue">R$ 0,00</strong>
             </div>
             <div class="income-row">
-              <div><span>Short Stay</span><small>1,00% ao mês</small></div>
+              <div><span>Short Stay / temporada</span><small>1,00% ao mês</small></div>
               <div class="income-track"><i id="shortStayBar"></i></div>
               <strong id="shortStayBarValue">R$ 0,00</strong>
             </div>
@@ -265,6 +411,7 @@
               </div>
               <p>A parcela inicial considera 50% do fundo comum somado à taxa administrativa total de 24,2%, distribuídos no prazo de 220 meses.</p>
               <p>A parcela integral é uma estimativa matemática do fundo comum completo mais a taxa administrativa. Reajustes, fundo de reserva, seguro, contemplação, lance e recomposição real dependem da proposta e do contrato.</p>
+              <p>A visão de cinco anos utiliza 25% de capital próprio de referência, valorização de 4,82% ao ano e receita bruta de 1% ao mês. O valor econômico bruto soma valorização estimada e receita bruta acumulada, sem descontar despesas, parcelas, saldo devedor ou impostos.</p>
               <p>As projeções de aluguel e negociação de cota são cenários comerciais ilustrativos e não representam garantia de renda, contemplação ou resultado.</p>
             </div>
           </details>
@@ -272,12 +419,17 @@
 
         <article class="panel cta-panel">
           <div>
-            <p class="eyebrow">PRÓXIMO PASSO</p>
-            <h2>Transforme este número em uma estratégia real.</h2>
-            <p>Nossa equipe analisa gratuitamente seu objetivo, seu prazo e os recursos disponíveis para montar um planejamento personalizado.</p>
+            <p class="eyebrow">PLANEJAMENTO GRATUITO</p>
+            <h2>Agora transforme a simulação em uma estratégia feita para você.</h2>
+            <p>Nossa equipe analisa gratuitamente seu objetivo, seu aporte, seu prazo e os recursos disponíveis para montar um planejamento patrimonial personalizado.</p>
+            <div class="cta-checks">
+              <span>✓ Consultoria totalmente gratuita</span>
+              <span>✓ Planejamento baseado no seu objetivo</span>
+              <span>✓ Análise de moradia, renda ou crescimento patrimonial</span>
+            </div>
           </div>
           <div class="cta-actions">
-            <button id="advisoryBtn" class="primary-button" type="button">Quero assessoria gratuita</button>
+            <button id="advisoryBtn" class="primary-button" type="button">Receber meu planejamento gratuito</button>
             <button id="groupBtn" class="secondary-button whatsapp" type="button">Entrar no grupo do WhatsApp</button>
             <button id="shareBtn" class="secondary-button" type="button">Compartilhar meu resultado</button>
           </div>
@@ -292,6 +444,6 @@
   </div>
 
   <div id="toast" class="toast" role="status"></div>
-  <script src="./app.js?v=110" defer></script>
+  <script src="./app.js?v=120" defer></script>
 </body>
 </html>

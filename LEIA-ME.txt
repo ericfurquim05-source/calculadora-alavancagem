@@ -1,4 +1,4 @@
-CALCULADORA DE ALAVANCAGEM — VERSÃO 1.1.0
+CALCULADORA DE ALAVANCAGEM PATRIMONIAL — VERSÃO 1.2.0
 
 ATUALIZAÇÃO NO GITHUB
 1. Abra o repositório calculadora-alavancagem.
@@ -8,26 +8,37 @@ ATUALIZAÇÃO NO GITHUB
 5. Abra reset.html uma vez depois da publicação.
 
 O QUE MUDOU
-- Cálculo principal agora usa o modelo de meia parcela do Simulador de Consórcio.
-- A pergunta principal é somente o aporte mensal.
-- O recurso para lance/complemento é opcional e não é somado automaticamente ao crédito.
-- Removida a antiga tabela fechada de faixas.
-- Removidos poder de compra combinado, próxima faixa e projeção longa como destaques.
-- Novos comparativos: moradia, locação tradicional, imóvel comercial, Short Stay, liquidez com cota contemplada e projeto empresarial.
-- Cadastro simplificado para nome e e-mail.
+- O cadastro voltou a solicitar nome, WhatsApp e e-mail.
+- A página inicial explica com mais clareza o que a pessoa recebe ao acessar.
+- Foi adicionada uma explicação completa de alavancagem patrimonial.
+- A estratégia usa 25% de capital próprio como referência intermediária entre 20% e 30%.
+- Nova visão de cinco anos com valorização, renda bruta e valor econômico gerado.
+- Novo comparativo mostrando como o aluguel pode ajudar a pagar a parcela integral.
+- Salas comerciais, galpões e Short Stay usam o cenário ilustrativo de 1% bruto ao mês.
+- Locação residencial usa cenário ilustrativo de 0,50% bruto ao mês.
+- O final da página reforça consultoria e planejamento totalmente gratuitos.
+- O resumo enviado ao WhatsApp inclui os principais números da simulação.
 
 MODELO DOS CÁLCULOS
 Crédito estimado = aporte mensal × 220 ÷ (50% + 24,2%).
 Parcela integral estimada = crédito × (100% + 24,2%) ÷ 220.
 
-Cenários ilustrativos de receita bruta:
-- Locação tradicional: 0,50% ao mês.
-- Imóvel comercial: 0,70% ao mês.
+VISÃO DE ALAVANCAGEM EM 5 ANOS
+- Capital próprio de referência: 25% do crédito.
+- Valorização ilustrativa: 4,82% ao ano.
+- Receita bruta de imóveis de maior rendimento: 1% ao mês.
+- Valor econômico bruto gerado: valorização estimada + receita bruta acumulada.
+
+IMPORTANTE: valor econômico bruto não significa lucro líquido. Não são descontadas parcelas, saldo devedor, vacância, impostos, condomínio, manutenção, seguros, administração ou outros custos.
+
+CENÁRIOS ILUSTRATIVOS DE RENDA BRUTA
+- Locação residencial: 0,50% ao mês.
+- Salas comerciais e galpões: 1,00% ao mês.
 - Short Stay: 1,00% ao mês.
 - Liquidez com cota contemplada: referência de 20% a 40% do crédito.
 
 CAPTURA DE LEADS
-O formulário envia nome e e-mail ao endereço:
+O formulário envia nome, WhatsApp e e-mail ao endereço:
 empresasa187@gmail.com
 
 Ele usa o endpoint AJAX do FormSubmit. No primeiro teste, o serviço pode enviar um e-mail de confirmação para ativar o recebimento.
