@@ -315,21 +315,6 @@
         openWhatsApp('Olá! Fiz a Calculadora de Alavancagem e quero entrar no grupo do WhatsApp.');
       }
     });
-    $('shareBtn').addEventListener('click', async () => {
-      const text = resultMessage();
-      if (navigator.share) {
-        try {
-          await navigator.share({ title: 'Calculadora de Alavancagem Patrimonial', text });
-          return;
-        } catch (_) {}
-      }
-      try {
-        await navigator.clipboard.writeText(text);
-        showToast('Resumo copiado para compartilhar.');
-      } catch (_) {
-        openWhatsApp(text);
-      }
-    });
   }
 
   function init() {
@@ -338,7 +323,7 @@
     if (storedLead) unlockCalculator(storedLead);
 
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=125').catch(() => {}));
+      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=126').catch(() => {}));
     }
   }
 

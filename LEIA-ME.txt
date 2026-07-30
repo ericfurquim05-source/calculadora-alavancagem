@@ -24,3 +24,6 @@ ALTERAÇÕES 1.2.5
 - Botões de ação movidos para o início dos resultados.
 - Short Stay / Airbnb atualizado para referência de 1% a 2,5% ao mês.
 - Bloco de renda simplificado.
+
+
+Versão 1.2.6: removidos o botão "Compartilhar meu resultado" e o bloco "O ponto principal" para melhor otimização no celular.
