@@ -1,46 +1,26 @@
-CALCULADORA DE ALAVANCAGEM PATRIMONIAL — VERSÃO 1.2.3
+CALCULADORA DE ALAVANCAGEM PATRIMONIAL — VERSÃO 1.2.5
 
-ATUALIZAÇÃO PRINCIPAL
-- Corrigido o cálculo matemático da meia parcela.
-- Removida a seleção por parcelas antigas da tabela.
-- O prazo de referência utilizado é 220 meses.
-- A taxa administrativa total utilizada é 24,2%.
+ATUALIZAÇÃO VISUAL
+- Novo fundo branco e cinza-claro para facilitar a leitura.
+- Vermelho escuro nos títulos, marca e botões principais.
+- Verde nos resultados de patrimônio, renda e crescimento.
+- Amarelo nas parcelas e informações que exigem atenção.
+- Layout mais limpo, comercial e com aparência de empresa financeira.
+- Destaque principal para o potencial de crédito e rentabilidade.
 
-FÓRMULA DA PARCELA INICIAL ATÉ A CONTEMPLAÇÃO
-1. Metade do crédito ÷ 220.
-2. Taxa de 24,2% sobre o crédito ÷ 220.
-3. Somar os dois resultados.
-
-Fórmula resumida:
+CÁLCULO MANTIDO
+Parcela inicial até a contemplação:
 ((crédito ÷ 2) ÷ 220) + ((crédito × 24,2%) ÷ 220)
 
-EXEMPLO COM CRÉDITO DE R$ 300.000
-- Metade do crédito: R$ 150.000.
-- R$ 150.000 ÷ 220 = R$ 681,82.
-- Taxa administrativa: R$ 300.000 × 24,2% = R$ 72.600.
-- R$ 72.600 ÷ 220 = R$ 330,00.
-- Parcela inicial até a contemplação: R$ 1.011,82.
+PARA PUBLICAR
+1. Suba os arquivos na raiz do repositório calculadora-alavancagem.
+2. Confirme o Commit changes.
+3. Abra reset.html uma vez para limpar o cache da versão anterior.
 
-PARCELA DE REFERÊNCIA APÓS A CONTEMPLAÇÃO
-A referência após a contemplação considera 100% do crédito mais a taxa administrativa:
-(crédito ÷ 220) + ((crédito × 24,2%) ÷ 220)
 
-COMO O APORTE É TRANSFORMADO EM CRÉDITO
-- A calculadora encontra o maior crédito teórico que cabe no aporte mensal.
-- O crédito é arredondado para baixo em faixas de R$ 10.000.
-- Depois, a parcela é calculada novamente pela fórmula correta.
-- Isso evita que a parcela exibida fique exatamente igual ao valor máximo informado.
-
-EXEMPLO COM APORTE DE R$ 2.000
-- Crédito teórico máximo: aproximadamente R$ 592.991,91.
-- Crédito exibido: R$ 590.000.
-- Parcela inicial até a contemplação: R$ 1.989,91.
-- Parcela de referência após a contemplação: R$ 3.330,82.
-- Folga em relação ao aporte informado: R$ 10,09.
-
-ARQUIVOS PARA PUBLICAÇÃO
-Suba todos os arquivos na raiz do repositório calculadora-alavancagem.
-Depois do commit, abra reset.html uma vez para remover o cache antigo.
-
-OBSERVAÇÃO
-Os valores são referências matemáticas do modelo informado. Reajustes, fundo de reserva, seguro, mês da contemplação e recomposição do saldo podem alterar os valores contratuais reais.
+ALTERAÇÕES 1.2.5
+- Removida a parcela após a contemplação.
+- Removido o bloco de projeção em 60 meses.
+- Botões de ação movidos para o início dos resultados.
+- Short Stay / Airbnb atualizado para referência de 1% a 2,5% ao mês.
+- Bloco de renda simplificado.

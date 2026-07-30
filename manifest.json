@@ -1,7 +1,7 @@
 {
   "name": "Calculadora de Alavancagem Patrimonial",
   "short_name": "Alavancagem",
-  "start_url": "./index.html?v=124",
+  "start_url": "./index.html?v=125",
   "scope": "./",
   "display": "standalone",
   "background_color": "#F4F6F8",

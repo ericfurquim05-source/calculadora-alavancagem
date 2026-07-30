@@ -2,7 +2,7 @@
   'use strict';
 
   const CONFIG = {
-    version: '1.2.4',
+    version: '1.2.5',
     leadEndpoint: 'https://formsubmit.co/ajax/empresasa187@gmail.com',
     whatsappNumber: '5551980554326',
     whatsappGroupUrl: '',
@@ -12,10 +12,8 @@
   const MODEL = {
     residentialRentRate: 0.005,
     highYieldRentRate: 0.01,
-    shortStayRentRate: 0.01,
-    annualAppreciationRate: 0.0482,
-    ownCapitalShare: 0.25,
-    projectionMonths: 60,
+    shortStayMinRentRate: 0.01,
+    shortStayMaxRentRate: 0.025,
     saleLowRate: 0.20,
     saleHighRate: 0.40,
     administrationRate: 0.242,
@@ -27,7 +25,6 @@
   const $ = (id) => document.getElementById(id);
   const money = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 2 });
   const wholeMoney = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
-  const percent = new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 0 });
 
   const state = {
     lead: null,
@@ -136,23 +133,17 @@
     return reducedCommonFund + administrationFee;
   }
 
-  function calculateFullInstallment(credit) {
-    const fullCommonFund = credit / MODEL.termMonths;
-    const administrationFee = (credit * MODEL.administrationRate) / MODEL.termMonths;
-    return fullCommonFund + administrationFee;
-  }
-
   function calculateCreditForBudget(budget) {
     const maximumCredit = (budget * MODEL.termMonths) / (0.5 + MODEL.administrationRate);
     const roundedCredit = Math.floor(maximumCredit / MODEL.creditStep) * MODEL.creditStep;
     return Math.max(0, roundedCredit);
   }
 
-  function applyIncomeBars(residential, commercial, shortStay) {
-    const maximum = Math.max(shortStay, commercial, residential, 1);
+  function applyIncomeBars(residential, commercial, shortStayMaximum) {
+    const maximum = Math.max(shortStayMaximum, commercial, residential, 1);
     $('traditionalBar').style.width = `${Math.max((residential / maximum) * 100, 4)}%`;
     $('commercialBar').style.width = `${Math.max((commercial / maximum) * 100, 4)}%`;
-    $('shortStayBar').style.width = `${Math.max((shortStay / maximum) * 100, 4)}%`;
+    $('shortStayBar').style.width = `${Math.max((shortStayMaximum / maximum) * 100, 4)}%`;
   }
 
   function calculate() {
@@ -171,44 +162,27 @@
 
     const term = MODEL.termMonths;
     const initialInstallment = calculateInitialInstallment(credit);
-    const fullInstallment = calculateFullInstallment(credit);
     const budgetGap = Math.max(0, budget - initialInstallment);
     const residentialRent = credit * MODEL.residentialRentRate;
     const commercialRent = credit * MODEL.highYieldRentRate;
-    const shortStayRent = credit * MODEL.shortStayRentRate;
+    const shortStayRentMin = credit * MODEL.shortStayMinRentRate;
+    const shortStayRentMax = credit * MODEL.shortStayMaxRentRate;
     const saleLow = credit * MODEL.saleLowRate;
     const saleHigh = credit * MODEL.saleHighRate;
 
-    const ownCapital = credit * MODEL.ownCapitalShare;
-    const assetMultiple = credit / ownCapital;
-    const finalProperty = credit * Math.pow(1 + MODEL.annualAppreciationRate, MODEL.projectionMonths / 12);
-    const appreciationGain = finalProperty - credit;
-    const grossRentSixtyMonths = commercialRent * MODEL.projectionMonths;
-    const economicGenerated = appreciationGain + grossRentSixtyMonths;
-    const generatedMultiple = economicGenerated / ownCapital;
-    const rentDifference = commercialRent - fullInstallment;
-    const rentCoverage = commercialRent / fullInstallment;
 
     state.lastResult = {
       budget,
       capital,
       credit,
       initialInstallment,
-      fullInstallment,
       residentialRent,
       commercialRent,
-      shortStayRent,
+      shortStayRentMin,
+      shortStayRentMax,
       saleLow,
       saleHigh,
       term,
-      ownCapital,
-      assetMultiple,
-      finalProperty,
-      grossRentSixtyMonths,
-      economicGenerated,
-      generatedMultiple,
-      rentDifference,
-      rentCoverage,
       budgetGap
     };
 
@@ -218,7 +192,6 @@
     setText('resultCreditHero', wholeMoney.format(credit));
     setText('resultCredit', money.format(credit));
     setText('resultInstallment', money.format(initialInstallment));
-    setText('resultFullInstallment', money.format(fullInstallment));
     setText('resultTerm', `${term} meses`);
     setText('resultCreditNote', 'Crédito estimado em faixas de R$ 10 mil');
     setText('resultInstallmentNote', budgetGap > 0 ? `${money.format(budgetGap)} abaixo do limite informado` : 'Dentro do limite informado');
@@ -230,35 +203,23 @@
       $('capitalNotice').hidden = true;
     }
 
-    setText('leverageOwnCapital', money.format(ownCapital));
-    setText('leverageAsset', money.format(credit));
-    setText('leverageMultiplier', `${assetMultiple.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}× o capital próprio`);
-    setText('leverageFinalProperty', money.format(finalProperty));
-    setText('leverageRentFiveYears', money.format(grossRentSixtyMonths));
-    setText('leverageGenerated', money.format(economicGenerated));
-    setText('leverageGeneratedMultiple', `${generatedMultiple.toLocaleString('pt-BR', { maximumFractionDigits: 1 })}× o capital próprio de referência`);
-
     setText('rentReferenceMonthly', `${money.format(commercialRent)}/mês`);
-    setText('rentFullInstallment', `${money.format(fullInstallment)}/mês`);
-    setText('rentDifference', `${rentDifference >= 0 ? '+' : ''}${money.format(rentDifference)}/mês`);
-    $('rentDifference').classList.toggle('positive-value', rentDifference >= 0);
-    $('rentDifference').classList.toggle('negative-value', rentDifference < 0);
-    setText('rentCoverageText', `No cenário ilustrativo, o aluguel bruto representa ${percent.format(rentCoverage * 100)}% da parcela de referência após a contemplação.`);
+    setText('rentReferenceAnnual', `${money.format(commercialRent * 12)}/ano`);
 
     setText('homeValue', money.format(credit));
     setText('traditionalRent', `${money.format(residentialRent)}/mês`);
     setText('traditionalRentAnnual', `${money.format(residentialRent * 12)} por ano em receita bruta ilustrativa de 0,50% ao mês.`);
     setText('commercialRent', `${money.format(commercialRent)}/mês`);
     setText('commercialRentAnnual', `${money.format(commercialRent * 12)} por ano em receita bruta ilustrativa de 1% ao mês.`);
-    setText('shortStayRent', `${money.format(shortStayRent)}/mês`);
-    setText('shortStayRentAnnual', `${money.format(shortStayRent * 12)} por ano em receita bruta ilustrativa de 1% ao mês.`);
+    setText('shortStayRent', `${money.format(shortStayRentMin)} a ${money.format(shortStayRentMax)}/mês`);
+    setText('shortStayRentAnnual', `${money.format(shortStayRentMin * 12)} a ${money.format(shortStayRentMax * 12)} por ano em receita bruta ilustrativa de 1% a 2,5% ao mês, dependendo da região e da operação.`);
     setText('saleRange', `${wholeMoney.format(saleLow)} a ${wholeMoney.format(saleHigh)}`);
     setText('businessValue', money.format(credit));
 
     setText('traditionalBarValue', money.format(residentialRent));
     setText('commercialBarValue', money.format(commercialRent));
-    setText('shortStayBarValue', money.format(shortStayRent));
-    applyIncomeBars(residentialRent, commercialRent, shortStayRent);
+    setText('shortStayBarValue', `${money.format(shortStayRentMin)} a ${money.format(shortStayRentMax)}`);
+    applyIncomeBars(residentialRent, commercialRent, shortStayRentMax);
 
     $('results').hidden = false;
     requestAnimationFrame(() => $('results').scrollIntoView({ behavior: 'smooth', block: 'start' }));
@@ -274,10 +235,8 @@
       `Aporte mensal: ${money.format(r.budget)}`,
       `Crédito imobiliário estimado: ${money.format(r.credit)}`,
       `Parcela inicial até a contemplação: ${money.format(r.initialInstallment)}`,
-      `Parcela de referência após a contemplação: ${money.format(r.fullInstallment)}`,
       `Renda bruta ilustrativa de 1%: ${money.format(r.commercialRent)}/mês`,
-      `Valor estimado do imóvel após 60 meses: ${money.format(r.finalProperty)}`,
-      `Valorização e aluguéis brutos em 60 meses: ${money.format(r.economicGenerated)}`
+      `Short Stay / Airbnb (1% a 2,5%): ${money.format(r.shortStayRentMin)} a ${money.format(r.shortStayRentMax)}/mês`
     ];
     if (r.capital > 0) lines.push(`Recurso próprio disponível: ${money.format(r.capital)}`);
     lines.push('Quero receber uma consultoria e um planejamento gratuitos com base no meu objetivo.');
@@ -379,7 +338,7 @@
     if (storedLead) unlockCalculator(storedLead);
 
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=124').catch(() => {}));
+      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=125').catch(() => {}));
     }
   }
 

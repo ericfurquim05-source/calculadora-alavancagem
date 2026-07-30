@@ -10,9 +10,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Alavancagem">
   <title>Calculadora de Alavancagem Patrimonial</title>
-  <link rel="manifest" href="./manifest.json?v=124">
-  <link rel="apple-touch-icon" href="./icon-192.png?v=124">
-  <link rel="stylesheet" href="./estilos.css?v=124">
+  <link rel="manifest" href="./manifest.json?v=125">
+  <link rel="apple-touch-icon" href="./icon-192.png?v=125">
+  <link rel="stylesheet" href="./estilos.css?v=125">
 </head>
 <body>
   <div class="ambient ambient-one"></div>
@@ -65,8 +65,8 @@
       <div class="gate-details">
         <div class="gate-proof-grid" aria-label="O que você vai descobrir">
           <div><strong>20% a 30%</strong><span>Referência de capital próprio em uma estratégia de alavancagem</span></div>
-          <div><strong>Até 1% a.m.</strong><span>Cenário ilustrativo de receita bruta em imóveis de maior rendimento</span></div>
-          <div><strong>60 meses</strong><span>Visão de valorização e renda para entender o crescimento patrimonial</span></div>
+          <div><strong>1% a.m.</strong><span>Referência ilustrativa para salas comerciais e galpões</span></div>
+          <div><strong>1% a 2,5%</strong><span>Referência ilustrativa para Short Stay / Airbnb, conforme a região e a operação</span></div>
         </div>
 
         <div class="leverage-visual">
@@ -115,7 +115,7 @@
           <div class="hero-mini-points">
             <span>✓ Crédito estimado</span>
             <span>✓ Renda de aluguel</span>
-            <span>✓ Projeção patrimonial</span>
+            <span>✓ Short Stay / Airbnb</span>
           </div>
         </div>
 
@@ -168,7 +168,7 @@
           </article>
         </div>
         <div class="education-note">
-          <strong>Em uma estratégia bem estruturada, valorização e renda podem ampliar o potencial do capital ao longo de 60 meses.</strong>
+          <strong>Em uma estratégia bem estruturada, a renda do imóvel pode ajudar a pagar o próprio ativo enquanto você forma patrimônio.</strong>
           <p>Use os números como referência para comparar possibilidades e conversar com um especialista.</p>
         </div>
       </section>
@@ -200,11 +200,6 @@
               <strong id="resultInstallment">R$ 0,00</strong>
               <small id="resultInstallmentNote">Faixa que cabe no valor informado</small>
             </div>
-            <div class="headline-card trust-card">
-              <span>Parcela de referência após a contemplação</span>
-              <strong id="resultFullInstallment">R$ 0,00</strong>
-              <small>Depois da compra, você passa a pagar pelo próprio imóvel</small>
-            </div>
             <div class="headline-card neutral-card">
               <span>Prazo de referência</span>
               <strong id="resultTerm">220 meses</strong>
@@ -221,85 +216,44 @@
           </div>
         </article>
 
-        <article class="panel leverage-panel">
-          <div class="section-heading">
-            <div>
-              <p class="eyebrow">PROJEÇÃO EM 60 MESES</p>
-              <h2>Veja o potencial da sua estratégia em 60 meses</h2>
-              <p>Um aporte mensal pode dar acesso a um patrimônio maior, enquanto o aluguel ajuda no fluxo e o imóvel pode se valorizar.</p>
-            </div>
+        <article class="panel quick-actions-panel">
+          <div class="quick-actions-copy">
+            <p class="eyebrow">PRÓXIMO PASSO</p>
+            <strong>Receba um planejamento gratuito para o seu objetivo.</strong>
           </div>
-
-          <div class="leverage-summary">
-            <div class="leverage-ratio">
-              <span>Seu capital de referência</span>
-              <strong id="leverageOwnCapital">R$ 0,00</strong>
-              <small>25% do valor do imóvel</small>
-            </div>
-            <div class="ratio-arrow">→</div>
-            <div class="leverage-ratio accent">
-              <span>Valor total do imóvel</span>
-              <strong id="leverageAsset">R$ 0,00</strong>
-              <small id="leverageMultiplier">0× o capital próprio</small>
-            </div>
-          </div>
-
-          <div class="leverage-kpis">
-            <div class="leverage-kpi success-card">
-              <span>Valor estimado do imóvel após 60 meses</span>
-              <strong id="leverageFinalProperty">R$ 0,00</strong>
-              <small>Com valorização ilustrativa de 4,82% a.a.</small>
-            </div>
-            <div class="leverage-kpi attention-card">
-              <span>Aluguéis brutos acumulados em 60 meses</span>
-              <strong id="leverageRentFiveYears">R$ 0,00</strong>
-              <small>Referência de 1% ao mês, antes de custos</small>
-            </div>
-            <div class="leverage-kpi highlighted success-card">
-              <span>Valorização + aluguéis brutos</span>
-              <strong id="leverageGenerated">R$ 0,00</strong>
-              <small id="leverageGeneratedMultiple">0× o capital próprio de referência</small>
-            </div>
-          </div>
-
-          <div class="leverage-explanation">
-            <strong>Em resumo:</strong>
-            <p>Você entra com uma parte do valor, controla um imóvel maior e pode usar a renda do inquilino para ajudar no pagamento enquanto o patrimônio se valoriza.</p>
+          <div class="cta-actions">
+            <button id="advisoryBtn" class="primary-button" type="button">Receber meu planejamento gratuito</button>
+            <button id="groupBtn" class="secondary-button whatsapp" type="button">Entrar no grupo do WhatsApp</button>
+            <button id="shareBtn" class="secondary-button" type="button">Compartilhar meu resultado</button>
           </div>
         </article>
 
-        <article class="panel rent-payment-panel">
+        <article class="panel rent-potential-panel">
           <div class="section-heading">
             <div>
-              <p class="eyebrow">O INQUILINO AJUDA NO FLUXO</p>
-              <h2>Exemplo de imóvel com renda bruta de 1% ao mês</h2>
-              <p>Salas comerciais, galpões, operações empresariais e alguns imóveis de curta temporada podem ser estudados com essa referência ilustrativa.</p>
+              <p class="eyebrow">RENDA QUE AJUDA A FORMAR PATRIMÔNIO</p>
+              <h2>O imóvel pode gerar renda enquanto você constrói patrimônio</h2>
+              <p>Em salas comerciais, galpões e outras operações bem escolhidas, usamos como referência ilustrativa uma receita bruta de 1% ao mês.</p>
             </div>
           </div>
 
-          <div class="rent-flow">
+          <div class="rent-potential-grid">
             <div class="flow-card income">
-              <span>Receita bruta estimada</span>
+              <span>Receita bruta estimada por mês</span>
               <strong id="rentReferenceMonthly">R$ 0,00/mês</strong>
-              <small>1% do valor do imóvel</small>
+              <small>Referência de 1% do valor do imóvel</small>
             </div>
-            <div class="flow-arrow">ajuda a pagar</div>
-            <div class="flow-card payment">
-              <span>Parcela após a contemplação</span>
-              <strong id="rentFullInstallment">R$ 0,00/mês</strong>
-              <small>Crédito integral + taxa de 24,2% em 220 meses</small>
+            <div class="flow-card attention-card">
+              <span>Receita bruta estimada em 12 meses</span>
+              <strong id="rentReferenceAnnual">R$ 0,00/ano</strong>
+              <small>Antes de custos, vacância e impostos</small>
             </div>
           </div>
 
           <div class="rent-callout">
-            <div>
-              <span>Diferença bruta antes de despesas</span>
-              <strong id="rentDifference">R$ 0,00/mês</strong>
-            </div>
-            <p id="rentCoverageText">O aluguel bruto representa 0% da parcela de referência após a contemplação.</p>
+            <strong>O ponto principal:</strong>
+            <p>A renda do inquilino pode ajudar no pagamento do próprio imóvel enquanto você forma patrimônio.</p>
           </div>
-
-          <p class="fine-print">Na prática, é necessário descontar vacância, condomínio, IPTU, manutenção, impostos, seguro e administração. O aluguel não é garantido e pode não cobrir integralmente a parcela.</p>
         </article>
 
         <article class="panel strategy-panel">
@@ -343,8 +297,8 @@
               <div class="strategy-icon">🛎️</div>
               <div class="strategy-content">
                 <span>Short Stay / Airbnb</span>
-                <strong id="shortStayRent">R$ 0,00/mês</strong>
-                <p id="shortStayRentAnnual">R$ 0,00 por ano em receita bruta ilustrativa de 1% ao mês.</p>
+                <strong id="shortStayRent">R$ 0,00 a R$ 0,00/mês</strong>
+                <p id="shortStayRentAnnual">R$ 0,00 a R$ 0,00 por ano em receita bruta ilustrativa de 1% a 2,5% ao mês, dependendo da região e da operação.</p>
               </div>
             </article>
 
@@ -389,9 +343,9 @@
               <strong id="commercialBarValue">R$ 0,00</strong>
             </div>
             <div class="income-row">
-              <div><span>Short Stay / Airbnb</span><small>1,00% ao mês</small></div>
+              <div><span>Short Stay / Airbnb</span><small>1,00% a 2,50% ao mês</small></div>
               <div class="income-track"><i id="shortStayBar"></i></div>
-              <strong id="shortStayBarValue">R$ 0,00</strong>
+              <strong id="shortStayBarValue">R$ 0,00 a R$ 0,00</strong>
             </div>
           </div>
 
@@ -411,31 +365,14 @@
               </div>
               <p>Primeiro calculamos o maior crédito que cabe no aporte informado. Depois arredondamos o crédito para baixo, em faixas de R$ 10 mil, e aplicamos a fórmula da meia parcela. Assim, o valor da parcela não fica artificialmente igual ao limite informado.</p>
               <p>Exemplo: para um crédito de R$ 300.000, metade do crédito corresponde a R$ 150.000. Dividido por 220, resulta em R$ 681,82. A taxa de 24,2% corresponde a R$ 72.600; dividida por 220, resulta em R$ 330,00. Parcela inicial: R$ 1.011,82.</p>
-              <p>Com um aporte máximo de R$ 2.000, o crédito estimado é arredondado para R$ 590.000 e a parcela inicial calculada fica em R$ 1.989,91. Após a contemplação, a referência passa a considerar 100% do crédito mais a taxa de 24,2%, divididos em 220 meses.</p>
-              <p>Os valores contratuais podem mudar com reajustes, fundo de reserva, seguro, mês da contemplação e recomposição do saldo.</p>
-              <p>A projeção de 60 meses utiliza 25% de capital próprio de referência, valorização de 4,82% ao ano e receita bruta de 1% ao mês. O valor econômico bruto soma valorização estimada e receita bruta acumulada, sem descontar despesas, parcelas, saldo devedor ou impostos.</p>
+              <p>Com um aporte máximo de R$ 2.000, o crédito estimado é arredondado para R$ 590.000 e a parcela inicial calculada fica em R$ 1.989,91.</p>
+              <p>Os valores contratuais podem mudar conforme reajustes, fundo de reserva, seguro e as condições da proposta.</p>
+              <p>Para Short Stay / Airbnb, a referência ilustrativa varia de 1% a 2,5% ao mês, dependendo da região, ocupação e qualidade da operação.</p>
               <p>As projeções de aluguel e negociação de cota são cenários comerciais ilustrativos e não representam garantia de renda, contemplação ou resultado.</p>
             </div>
           </details>
         </article>
 
-        <article class="panel cta-panel">
-          <div>
-            <p class="eyebrow">PLANEJAMENTO GRATUITO</p>
-            <h2>Agora transforme a simulação em uma estratégia feita para você.</h2>
-            <p>Nossa equipe analisa gratuitamente seu objetivo, seu aporte, seu prazo e os recursos disponíveis para montar um planejamento patrimonial personalizado.</p>
-            <div class="cta-checks">
-              <span>✓ Consultoria totalmente gratuita</span>
-              <span>✓ Planejamento baseado no seu objetivo</span>
-              <span>✓ Análise de moradia, renda ou crescimento patrimonial</span>
-            </div>
-          </div>
-          <div class="cta-actions">
-            <button id="advisoryBtn" class="primary-button" type="button">Receber meu planejamento gratuito</button>
-            <button id="groupBtn" class="secondary-button whatsapp" type="button">Entrar no grupo do WhatsApp</button>
-            <button id="shareBtn" class="secondary-button" type="button">Compartilhar meu resultado</button>
-          </div>
-        </article>
       </section>
     </main>
 
@@ -446,6 +383,6 @@
   </div>
 
   <div id="toast" class="toast" role="status"></div>
-  <script src="./app.js?v=124" defer></script>
+  <script src="./app.js?v=125" defer></script>
 </body>
 </html>

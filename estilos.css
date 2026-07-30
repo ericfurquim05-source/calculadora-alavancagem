@@ -102,7 +102,7 @@ main{display:grid;gap:22px}
 .result-statement{margin:18px 0;padding:25px;border-radius:21px;background:linear-gradient(145deg,var(--green-soft),#fff);border:2px solid #9ed3b2;text-align:center}
 .result-statement span,.result-statement small{display:block;color:#475467;font-weight:750}
 .result-statement strong{display:block;font-size:clamp(38px,8vw,65px);line-height:1.05;letter-spacing:-.055em;color:var(--green);margin:8px 0 4px}
-.headline-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.headline-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .headline-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;min-height:137px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
 .headline-card:before,.leverage-kpi:before,.strategy-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:#d0d5dd}
 .headline-card span,.strategy-card span,.capital-notice span{color:var(--muted);font-size:13px;font-weight:800}
@@ -219,8 +219,22 @@ footer{text-align:center;color:#98a2b3;font-size:11px;line-height:1.5;padding:28
 .leverage-visual-labels{display:flex;justify-content:space-between;gap:18px;margin-top:10px;color:var(--muted);font-size:11px}
 .leverage-visual-labels b{color:var(--text)}
 .leverage-visual p{margin:14px 0 0;color:#475467;font-size:12px;line-height:1.55}
+
+.quick-actions-panel{display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:22px;padding:22px 26px;border-top:5px solid var(--red);background:linear-gradient(145deg,#fff,var(--red-soft))}
+.quick-actions-copy{display:grid;gap:3px}
+.quick-actions-copy .eyebrow{margin:0}
+.quick-actions-copy strong{font-size:20px;line-height:1.3}
+.quick-actions-panel .cta-actions{grid-template-columns:1.35fr 1fr 1fr;display:grid;gap:9px}
+.quick-actions-panel .primary-button,.quick-actions-panel .secondary-button{min-height:50px;padding:0 14px;font-size:12px}
+.rent-potential-panel{border-top:5px solid var(--green)}
+.rent-potential-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:23px}
+.rent-potential-panel .rent-callout{grid-template-columns:auto 1fr;background:var(--green-soft);border-color:#b9e1c8}
+.rent-potential-panel .rent-callout strong{color:var(--green-dark);white-space:nowrap}
+
 @media(max-width:900px){
   .headline-grid{grid-template-columns:1fr 1fr}
+  .quick-actions-panel{grid-template-columns:1fr}
+  .quick-actions-panel .cta-actions{grid-template-columns:1fr 1fr 1fr}
   .hero-panel{grid-template-columns:1fr}
   .gate-card-expanded{grid-template-columns:1fr;grid-template-areas:"hero" "form" "details"}
   .gate-card-expanded .lead-form{position:static}
@@ -236,7 +250,7 @@ footer{text-align:center;color:#98a2b3;font-size:11px;line-height:1.5;padding:28
   .app-header .ghost-button{font-size:0;width:42px;padding:0}
   .app-header .ghost-button:after{content:"↻";font-size:18px}
   .panel{padding:22px;border-radius:22px}
-  .headline-grid,.strategy-grid,.cta-panel,.gate-proof-grid,.steps-grid,.leverage-kpis{grid-template-columns:1fr}
+  .headline-grid,.strategy-grid,.cta-panel,.gate-proof-grid,.steps-grid,.leverage-kpis,.rent-potential-grid{grid-template-columns:1fr}
   .leverage-kpi.highlighted{grid-column:auto}
   .income-row{grid-template-columns:1fr auto}
   .income-track{grid-column:1/-1;grid-row:2}
@@ -247,6 +261,7 @@ footer{text-align:center;color:#98a2b3;font-size:11px;line-height:1.5;padding:28
   .strategy-card{grid-template-columns:45px 1fr;min-height:auto}
   .capital-notice,.cost-warning,.education-note,.leverage-explanation,.rent-callout{grid-template-columns:1fr;gap:8px}
   .leverage-summary,.rent-flow{grid-template-columns:1fr}
+  .quick-actions-panel .cta-actions{grid-template-columns:1fr}
   .ratio-arrow{transform:rotate(90deg);text-align:center}
   .flow-arrow{justify-self:center}
   .leverage-visual-labels{display:grid;gap:5px}
@@ -265,7 +280,7 @@ footer{text-align:center;color:#98a2b3;font-size:11px;line-height:1.5;padding:28
 }
 @media print{
   body{background:#fff;color:#111}
-  .ambient,.app-header,.hero-panel,.source-panel,.cta-panel,footer{display:none!important}
+  .ambient,.app-header,.hero-panel,.source-panel,.cta-panel,.quick-actions-panel,footer{display:none!important}
   .app-shell{width:100%;padding:0}
   .panel{box-shadow:none;border:1px solid #ddd;background:#fff!important;color:#111;break-inside:avoid}
   .headline-card,.strategy-card,.result-statement,.capital-notice,.cost-warning{background:#fff!important;color:#111}
