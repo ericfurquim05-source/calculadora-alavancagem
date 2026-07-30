@@ -2,7 +2,7 @@
   'use strict';
 
   const CONFIG = {
-    version: '1.2.3',
+    version: '1.2.4',
     leadEndpoint: 'https://formsubmit.co/ajax/empresasa187@gmail.com',
     whatsappNumber: '5551980554326',
     whatsappGroupUrl: '',
@@ -241,6 +241,8 @@
     setText('rentReferenceMonthly', `${money.format(commercialRent)}/mês`);
     setText('rentFullInstallment', `${money.format(fullInstallment)}/mês`);
     setText('rentDifference', `${rentDifference >= 0 ? '+' : ''}${money.format(rentDifference)}/mês`);
+    $('rentDifference').classList.toggle('positive-value', rentDifference >= 0);
+    $('rentDifference').classList.toggle('negative-value', rentDifference < 0);
     setText('rentCoverageText', `No cenário ilustrativo, o aluguel bruto representa ${percent.format(rentCoverage * 100)}% da parcela de referência após a contemplação.`);
 
     setText('homeValue', money.format(credit));
@@ -377,7 +379,7 @@
     if (storedLead) unlockCalculator(storedLead);
 
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=123').catch(() => {}));
+      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=124').catch(() => {}));
     }
   }
 
