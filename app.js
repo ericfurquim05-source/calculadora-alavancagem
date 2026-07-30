@@ -307,13 +307,23 @@
       location.reload();
     });
 
-    $('advisoryBtn').addEventListener('click', () => openWhatsApp(resultMessage()));
-    $('groupBtn').addEventListener('click', () => {
+    const advisoryHandler = () => openWhatsApp(resultMessage());
+    const groupHandler = () => {
       if (CONFIG.whatsappGroupUrl) {
         window.open(CONFIG.whatsappGroupUrl, '_blank', 'noopener');
       } else {
         openWhatsApp('Olá! Fiz a Calculadora de Alavancagem e quero entrar no grupo do WhatsApp.');
       }
+    };
+
+    ['advisoryBtn', 'advisoryBtnBottom'].forEach((id) => {
+      const el = $(id);
+      if (el) el.addEventListener('click', advisoryHandler);
+    });
+
+    ['groupBtn', 'groupBtnBottom'].forEach((id) => {
+      const el = $(id);
+      if (el) el.addEventListener('click', groupHandler);
     });
   }
 
@@ -323,7 +333,7 @@
     if (storedLead) unlockCalculator(storedLead);
 
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=126').catch(() => {}));
+      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=127').catch(() => {}));
     }
   }
 

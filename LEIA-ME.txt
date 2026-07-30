@@ -27,3 +27,6 @@ ALTERAÇÕES 1.2.5
 
 
 Versão 1.2.6: removidos o botão "Compartilhar meu resultado" e o bloco "O ponto principal" para melhor otimização no celular.
+
+
+Versão 1.2.7: adicionado novamente o bloco de CTA (Receber planejamento gratuito + Entrar no grupo do WhatsApp) também após o último bloco da página.

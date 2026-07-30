@@ -287,3 +287,6 @@ footer{text-align:center;color:#98a2b3;font-size:11px;line-height:1.5;padding:28
   .eyebrow{color:#8f1d15}
   .headline-card span,.headline-card small,.strategy-card span,.strategy-card p,.section-heading p,.capital-notice span,.capital-notice p,.cost-warning p{color:#555}
 }
+
+
+.bottom-cta-panel { margin-top: 24px; }
