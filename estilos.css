@@ -290,3 +290,38 @@ footer{text-align:center;color:#98a2b3;font-size:11px;line-height:1.5;padding:28
 
 
 .bottom-cta-panel { margin-top: 24px; }
+
+
+/* v1.2.8 — página inicial exclusiva para cadastro */
+.gate-card-form-only{
+  width:min(520px,100%);
+  display:block;
+  padding:0;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+.lead-form-only{
+  width:100%;
+  margin:0;
+  position:static;
+  padding:30px;
+}
+.gate-form-brand{
+  margin-bottom:12px;
+  align-items:center;
+}
+.gate-form-brand h1{
+  font-size:clamp(24px,5vw,34px);
+  line-height:1.05;
+  margin-top:4px;
+}
+.form-intro{
+  margin:0 0 22px;
+  color:var(--muted);
+}
+@media(max-width:430px){
+  .gate-card-form-only{padding:0}
+  .lead-form-only{padding:20px;border-radius:22px}
+  .gate-form-brand .brand-mark{width:44px;height:44px}
+}

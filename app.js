@@ -2,7 +2,7 @@
   'use strict';
 
   const CONFIG = {
-    version: '1.2.5',
+    version: '1.2.8',
     leadEndpoint: 'https://formsubmit.co/ajax/empresasa187@gmail.com',
     whatsappNumber: '5551980554326',
     whatsappGroupUrl: '',
@@ -73,7 +73,7 @@
   function loadLead() {
     try {
       const stored = JSON.parse(localStorage.getItem('calc_alavancagem_lead') || 'null');
-      if (stored?.name && stored?.email && stored?.whatsapp) return stored;
+      if (stored?.name && stored?.email && stored?.whatsapp && stored?.city) return stored;
     } catch (_) {}
     return null;
   }
@@ -103,6 +103,7 @@
       nome: lead.name,
       whatsapp: lead.whatsapp,
       email: lead.email,
+      cidade: lead.city,
       origem: 'Calculadora de Alavancagem Patrimonial',
       versao: CONFIG.version,
       data: new Date().toLocaleString('pt-BR'),
@@ -232,6 +233,7 @@
       'Olá! Fiz a Calculadora de Alavancagem Patrimonial.',
       `Nome: ${state.lead?.name || 'Não informado'}`,
       `WhatsApp cadastrado: ${state.lead?.whatsapp || 'Não informado'}`,
+      `Cidade: ${state.lead?.city || 'Não informada'}`,
       `Aporte mensal: ${money.format(r.budget)}`,
       `Crédito imobiliário estimado: ${money.format(r.credit)}`,
       `Parcela inicial até a contemplação: ${money.format(r.initialInstallment)}`,
@@ -264,6 +266,7 @@
         name: $('leadName').value.trim(),
         whatsapp: $('leadWhatsapp').value.trim(),
         email: $('leadEmail').value.trim(),
+        city: $('leadCity').value.trim(),
         createdAt: new Date().toISOString()
       };
 
@@ -277,6 +280,10 @@
       }
       if (!validEmail(lead.email)) {
         $('leadStatus').textContent = 'Digite um e-mail válido para continuar.';
+        return;
+      }
+      if (lead.city.length < 2) {
+        $('leadStatus').textContent = 'Digite sua cidade para continuar.';
         return;
       }
       if (!$('leadConsent').checked) {
@@ -294,7 +301,7 @@
         if (!result.ok && !result.skipped) showToast('Acesso liberado. O contato poderá ser confirmado pela equipe.');
       });
       button.disabled = false;
-      button.textContent = 'Acessar gratuitamente';
+      button.textContent = 'Acessar calculadora';
     });
 
     $('calculatorForm').addEventListener('submit', (event) => {
@@ -333,7 +340,7 @@
     if (storedLead) unlockCalculator(storedLead);
 
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=127').catch(() => {}));
+      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js?v=128').catch(() => {}));
     }
   }
 

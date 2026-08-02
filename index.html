@@ -10,37 +10,27 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Alavancagem">
   <title>Calculadora de Alavancagem Patrimonial</title>
-  <link rel="manifest" href="./manifest.json?v=125">
-  <link rel="apple-touch-icon" href="./icon-192.png?v=125">
-  <link rel="stylesheet" href="./estilos.css?v=125">
+  <link rel="manifest" href="./manifest.json?v=128">
+  <link rel="apple-touch-icon" href="./icon-192.png?v=128">
+  <link rel="stylesheet" href="./estilos.css?v=128">
 </head>
 <body>
   <div class="ambient ambient-one"></div>
   <div class="ambient ambient-two"></div>
 
   <section id="leadGate" class="gate-shell" aria-labelledby="gateTitle">
-    <div class="gate-card gate-card-expanded">
-      <div class="gate-intro gate-hero">
-        <div class="brand-row">
+    <div class="gate-card gate-card-form-only">
+      <form id="leadForm" class="lead-form lead-form-only" novalidate>
+        <div class="brand-row gate-form-brand">
           <div class="brand-mark">CA</div>
           <div>
-            <p class="eyebrow">PLANEJAMENTO PATRIMONIAL</p>
-            <h1 id="gateTitle">Calculadora de Alavancagem</h1>
+            <p class="eyebrow">CALCULADORA DE ALAVANCAGEM</p>
+            <h1 id="gateTitle">Acesse sua calculadora</h1>
           </div>
         </div>
 
-        <div class="gate-copy">
-          <span class="tag">Acesso e planejamento gratuitos</span>
-          <h2>Veja quanto patrimônio e renda seu aporte mensal pode movimentar.</h2>
-          <p>Em poucos minutos, você descobre seu crédito estimado e compara estratégias com potencial de receita bruta de até 1% ao mês.</p>
-        </div>
-      </div>
+        <p class="form-intro">Preencha seus dados para liberar o acesso.</p>
 
-      <form id="leadForm" class="lead-form" novalidate>
-        <div class="form-title">
-          <strong>Libere seu acesso</strong>
-          <span>Leva menos de 1 minuto</span>
-        </div>
         <div class="field">
           <label for="leadName">Seu nome</label>
           <input id="leadName" name="nome" type="text" maxlength="80" placeholder="Ex.: João da Silva" autocomplete="name" required>
@@ -53,44 +43,18 @@
           <label for="leadEmail">Seu e-mail</label>
           <input id="leadEmail" name="email" type="email" maxlength="120" placeholder="voce@email.com" autocomplete="email" required>
         </div>
+        <div class="field">
+          <label for="leadCity">Sua cidade</label>
+          <input id="leadCity" name="cidade" type="text" maxlength="80" placeholder="Ex.: Lajeado" autocomplete="address-level2" required>
+        </div>
         <label class="consent">
           <input id="leadConsent" type="checkbox" required>
-          <span>Autorizo o uso destes dados para liberar a simulação e receber contato sobre o resultado.</span>
+          <span>Autorizo o uso destes dados para liberar a calculadora e receber contato sobre o resultado.</span>
         </label>
-        <button id="leadSubmit" class="primary-button" type="submit">Acessar gratuitamente</button>
-        <p class="privacy-note">Seus dados serão usados apenas para liberar a análise e permitir o atendimento da equipe.</p>
+        <button id="leadSubmit" class="primary-button" type="submit">Acessar calculadora</button>
+        <p class="privacy-note">Seus dados serão usados apenas para liberar a calculadora e permitir o atendimento da equipe.</p>
         <p id="leadStatus" class="form-status" role="status"></p>
       </form>
-
-      <div class="gate-details">
-        <div class="gate-proof-grid" aria-label="O que você vai descobrir">
-          <div><strong>20% a 30%</strong><span>Referência de capital próprio em uma estratégia de alavancagem</span></div>
-          <div><strong>1% a.m.</strong><span>Referência ilustrativa para salas comerciais e galpões</span></div>
-          <div><strong>1% a 2,5%</strong><span>Referência ilustrativa para Short Stay / Airbnb, conforme a região e a operação</span></div>
-        </div>
-
-        <div class="leverage-visual">
-          <div class="leverage-visual-head">
-            <span>Como funciona a alavancagem patrimonial</span>
-            <strong>Você usa uma parte do capital e controla um ativo maior.</strong>
-          </div>
-          <div class="leverage-visual-track" aria-hidden="true">
-            <i class="own"></i><i class="planned"></i>
-          </div>
-          <div class="leverage-visual-labels">
-            <span><b>20%–30%</b> recursos próprios</span>
-            <span><b>70%–80%</b> planejamento e fluxo do ativo</span>
-          </div>
-          <p>Em um cenário bem estruturado, a renda do imóvel pode ajudar a pagar as parcelas enquanto o patrimônio se valoriza. Os números são ilustrativos e dependem da operação real.</p>
-        </div>
-
-        <div class="gate-benefits" aria-label="Benefícios">
-          <div><span>01</span><p>Crédito estimado a partir do valor que cabe no seu bolso</p></div>
-          <div><span>02</span><p>Comparação entre moradia, locação residencial, salas comerciais e galpões</p></div>
-          <div><span>03</span><p>Exemplo de renda bruta de 1% ao mês em imóveis com maior potencial</p></div>
-          <div><span>04</span><p>Planejamento personalizado e consultoria totalmente gratuitos</p></div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -387,6 +351,6 @@
   </div>
 
   <div id="toast" class="toast" role="status"></div>
-  <script src="./app.js?v=127" defer></script>
+  <script src="./app.js?v=128" defer></script>
 </body>
 </html>
